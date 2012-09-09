@@ -134,3 +134,7 @@ a:hover {
 small {
     font-size: 66%;
 }
+
+cite {
+    font-style: italic;
+}
