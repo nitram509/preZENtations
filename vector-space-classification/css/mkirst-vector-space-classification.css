@@ -127,7 +127,7 @@ a:hover {
   background: rgba(0,0,0,0.3);
 }
 
-.fade-in {
+.fade-in, .fade-out{
     opacity: 0.0;
 }
 
