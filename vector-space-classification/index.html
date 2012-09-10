@@ -1,148 +1,255 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Josefin+Sans|Actor' rel='stylesheet' type='text/css'>
-    <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
-    <link href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Josefin+Sans|Actor' rel='stylesheet' type='text/css'>
+  <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
+  <link href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
 
-  </head>
-  <body>
-    <div id="mosho">
+</head>
+<body>
+<div id="mosho">
 
-      <!--  ******************************************************************************  -->
-      <div class="mosho-slide" id="titel"
-           data-scale=1>
-        <h1>Vector Space Classification</h1>
-        <p>Martin W. Kirst</p>
-        <small>&copy; 2012, Hypoport AG</small>
-      </div>
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="titel"
+       data-scale=1>
+    <h1>Vector Space Classification</h1>
 
-      <!--  ******************************************************************************  -->
-      <div class="mosho-slide" id="was-heute-mittag"
-           data-x=1120>
-        <h2>Was hattet ihr heute Mittag?</h2>
+    <p>Martin W. Kirst</p>
+    <small>&copy; 2012, Hypoport AG</small>
+  </div>
 
-      </div>
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="was-heute-mittag"
+       data-x=1120>
+    <h2>Was hattet ihr heute Mittag?</h2>
 
-      <!--  ******************************************************************************  -->
-      <div class="mosho-slide" id="burger"
-           data-x=1120>
-        <h2>Arrays.sort() ?</h2>
-        <p>
-          <img class="fade-in fade-out" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"/>
-          <img class="fade-in fade-out" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png"/>
-          <img class="fade-in fade-out" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png"/>
-          <br/>
-          <img class="fade-in fade-out" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png"/>
-          <img class="fade-in fade-out" src="images/burger-a70eddc4277766515035e7e17297a57a.png"/>
-          <img class="fade-in fade-out" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png"/>
-        </p>
-      </div>
+  </div>
 
-      <!--  ******************************************************************************  -->
-      <div class="mosho-slide" id="wikipedia-definition"
-           data-x=1120 data-y=-800 data-z=800
-           data-rotx=45>
-        <h3><img src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo" /></h3>
-        <p style="text-align: justify">
-          <cite>
-            Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
-            anhand ihrer Merkmale in vorgegebene Kategorien einordnet ...
-          </cite>
-        </p>
-        <p style="text-align: justify">
-          <cite>
-            <small>Der Begriff "Klassifikator" wird meist spezifisch für solche Algorithmen verwendet,
-            in denen der Klassifikation von Objekten eine Lernphase ("Training") vorausgeht.</small>
-          </cite>
-        </p>
-      </div>
-      
-      <div class="mosho-slide" id="scene-tree"
-           data-x=2240 data-y=-800 data-z=800
-           data-rotx=45>
-        <h3>...in a scene tree</h3>
-        <pre class="code" style="width: 550px">
-&lt;div class="mosho-group" data-x=1000&gt;
-  &lt;div class="mosho-slide" data-y=-500&gt;
-     &lt;h1&gt;one&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;div class="mosho-slide" data-y=500&gt;
-     &lt;h1&gt;two&lt;/h1&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-      </div>
-      
-      <div class="mosho-slide" id="slide-transitions"
-           data-x=1120 data-y=1120
-           data-transition="2s ease">
-        <h3>Per-"slide" transitions</h3>
-        <pre class="code" style="width: 440px">
-&lt;div class="mosho-slide"
-     data-transition="2s ease"&gt;
-   &lt;h2&gt;That was ease-y&lt;/h2&gt;
-&lt;/div&gt;</pre>
-      </div>
-      
-      <div class="mosho-group"
-           data-x=2240 data-y=1120>
-        <div class="mosho-slide" id="nonlinear"
-             data-next="apis-rule">
-          <h3>Non-linear linking</h3>
-          <p>Would you like to know more? <a href="#nonlinear-more">Yes</a></p>
-          <aside id="nonlinear-tag"></aside>
-        </div>
-        <div class="mosho-slide" id="nonlinear-more"
-             data-next="nonlinear"
-             data-z=-480 data-roty=180>
-          <p>It's not too tricky</p>
-          <pre class="code" style="width: 640px">
-&lt;div class="mosho-slide" id="slide-a"
-     data-next="slide-b"&gt;
-   &lt;a href="#slide-a-more"&gt;detour&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="mosho-slide" id="slide-a-more"
-     data-next="slide-a"&gt;
-   &lt;p&gt;scenic route&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="mosho-slide" id="slide-b"
-     data-prev="slide-a"&gt;
-   &lt;p&gt;final destination&lt;/p&gt;
-&lt;/div&gt;</pre>
-        </div>
-      </div>
-      
-      <div class="mosho-slide" id="apis-rule"
-           data-prev="nonlinear"
-           data-x=1120 data-y=2240>
-        <h3>A handy API?</h3>
-        <pre class="code" style="width: 500px">
-mosho.enter("mySlide", function () {
-  console.log("yay!")
-})</pre>
-      </div>
-      
-      <div class="mosho-slide" id="plugins-too"
-           data-x=1120 data-y=2240 data-z=-480
-           data-roty=-180>
-        <h3>...and plugins!</h3>
-        <pre class="code" style="width: 500px">
-mosho.plugin({
-  name: "scaleActiveSlide",
-  preShow: function (evt) {
-    prev = evt.detail.prevSlide
-    next = evt.detail.nextSlide
-    if (prev) { prev.scale(0.25) }
-    if (next) { next.scale(4) }
-  }
-})</pre>
-      </div>
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="burger"
+       data-x=1120>
+    <h2>Arrays.sort() ?</h2>
+
+    <p>
+      <img class="fade-in fade-out" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"/>
+      <img class="fade-in fade-out" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png"/>
+      <img class="fade-in fade-out" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png"/>
+      <br/>
+      <img class="fade-in fade-out" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png"/>
+      <img class="fade-in fade-out" src="images/burger-a70eddc4277766515035e7e17297a57a.png"/>
+      <img class="fade-in fade-out" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png"/>
+    </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+
+  <div class="mosho-slide" id="wikipedia-definition"
+       data-x=1120 data-y=-800 data-z=800
+       data-rotx=45>
+    <h2>
+      <img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo"/>
+    </h2>
+
+    <p class="well-background" style="text-align: justify">
+      <cite>
+        „
+        Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
+        anhand ihrer Merkmale in vorgegebene Kategorien einordnet.
+        <small>[...]</small>
+        <br>
+        Der Begriff Klassifikator wird meist spezifisch für solche Algorithmen verwendet,
+        in denen der Klassifikation von Objekten eine Lernphase ('Training') vorausgeht.
+        “
+      </cite>
+    </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="usage"
+       data-x=2240 data-y=-800 data-z=800
+       data-rotx=45>
+    <h3>Typische Verwendung</h3>
+
+    <ul>
+      <li>Suchen (Dokumente)</li>
+      <li>Spam-Filter (Bayes Filter)</li>
+      <li>Produktempfehlungen</li>
+      <li>(...)</li>
+    </ul>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="sortiere-server"
+       data-x=1120 data-y=1120
+       data-transition="2s ease">
+    <h4>Herausforderung bei Eclipse:<br/>
+      Sortiere die Mirror-Server</h4>
+    <table class="code">
+      <thead>
+      <tr>
+        <td>Bytes/Sek</td>
+        <td>&#216;Fehler</td>
+        <td>Entfernung(km)</td>
+        <td>URL</td>
+      </tr>
+      </thead>
+      <tr>
+        <td>140.200</td>
+        <td>2</td>
+        <td>&nbsp;200</td>
+        <td>http://www... .de</td>
+      </tr>
+      <tr>
+        <td>125.000</td>
+        <td>1</td>
+        <td>&nbsp;900</td>
+        <td>http://www... .fr</td>
+      </tr>
+      <tr>
+        <td>200.000</td>
+        <td>3</td>
+        <td>1200</td>
+        <td>http://www... .se</td>
+      </tr>
+      <tr>
+        <td>
+          <small>...</small>
+        </td>
+        <td>
+          <small>...</small>
+        </td>
+        <td>
+          <small>...</small>
+        </td>
+        <td>
+          <small>...</small>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="ansatz"
+       data-x=2240 data-y=-800 data-z=800
+       data-rotx=45>
+    <h3>Ansatz</h3>
+
+    <p>
+      Vector Space Classification<br>
+      mit<br>
+      Training ähnlich Rocchio
+    </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="vektoren">
+    <h3>Vektoren</h3>
+
+      <p>
+        <img class="white-background" src="images/MSP27551a32fd06e5c492e400006843aga8c534ahde.png" alt="vektoren"/>
+      </p>
+
+      <p class="legend">
+        <small><small>
+          http://www.wolframalpha.com/input/?i=vector+{2%2c+3%2c+4}%2c+{5%2c+1%2c+3}
+        </small></small>
+      </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="analytische-geometrie">
+    <h3>Analytische Geometrie</h3>
+    <ul>
+      <li>Addition/Subtraktion</li>
+      <li>Skalarprodukt (dot product)</li>
+      <li>Kreuzprodukt</li>
+      <li>Länge/Betrag</li>
+      <li>Einheitsvektor</li>
+      <li>Euklidischer Abstand == Winkel</li>
+    </ul>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="erklaerung">
+    <h3>Total vereinfacht</h3>
+    <p>
+      <img class="auto-hide" style="width: 55%; height: 55%; margin: 25px;" src="images/Rechte-hand-regel-ex.png"
+           alt="rechte Hand ... Erklärung am beispiel von vektoren im raum">
+    </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="import-math-1">
+    <h3>Import Math.*</h3>
+<pre class="code-math">
+                    ->   ->
+                    q  * t                       (dot product)
+sim(q,t) = ---------------------------
+             / || -> ||   || -> || \
+            |  || q  || * || t  ||  |      (euclidean lengths)
+             \                     /
+</pre>
+    <p class="legend">
+      <small><small>
+        JavE5.0://sim(q,t) = vec(q) * vec(t) /  ( ||vec(q)|| * ||vec(t)|| )
+      </small></small>
+    </p>
     </div>
-  </body>
-  <script src="js/mosho.js" type="text/javascript"></script>
-  <script src="js/mkirst-vector-space-classification.js"  type="text/javascript"></script>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="import-math-2">
+    <h3>Import Math.*</h3>
+<pre class="code-math">
+                            N
+                           ---
+                           \
+                            >   Q   * T
+                           /     ai    ai
+                           ---
+                          i = 1
+sim(q,t) = -----------------------------------------
+             /     ___________       ___________ \
+            |     |   N             |   N         |
+            |     |  ---            |  ---        |
+            |  _  |  \     2     _  |  \     2    |
+            |   \ |   >   Q    *  \ |   >   T     |
+            |    \|  /     ai      \|  /     ai   |
+            |     |  ---            |  ---        |
+             \    | i = 1           | i = 1      /
+</pre>
+    <p class="legend">
+      <small><small>
+        JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) /  (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
+      </small></small>
+    </p>
+  </div>
+
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="image">
+    <h3>n-dimensional</h3>
+    <p>
+      It's math ;-)
+    </p>
+  </div>
+
+  <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="demo-code">
+    <h3>Code</h3>
+    <p>
+      Eclipse Bug „Synchronization problem in mirror selection“
+    </p>
+    <p>
+      https://bugs.eclipse.org/bugs/show_bug.cgi?id=317785
+    </p>
+  </div>
+
+</div>
+</body>
+<script src="js/mosho.js" type="text/javascript"></script>
+<script src="js/mkirst-vector-space-classification.js" type="text/javascript"></script>
 </html>
