@@ -12,15 +12,14 @@ package com.github.nitram509.vectorspaceclassification;
 
 public class MirrorInfo {
 
-  public static final long UNKNOWN_RATE = -1;
-
-  long bytesPerSecond = UNKNOWN_RATE;
-  int failureCount = 0;
-
+  final long bytesPerSecond ;
+  final int failureCount;
   final int initialRank;
   final String locationString;
 
-  public MirrorInfo(String location, int initialRank) {
+  public MirrorInfo(long bytesPerSecond,int failureCount, int initialRank, String location) {
+    this.bytesPerSecond = bytesPerSecond;
+    this.failureCount = failureCount;
     this.initialRank = initialRank;
     this.locationString = location;
   }

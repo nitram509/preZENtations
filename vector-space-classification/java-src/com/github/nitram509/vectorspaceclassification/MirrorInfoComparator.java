@@ -33,7 +33,7 @@ public class MirrorInfoComparator implements Comparator<MirrorInfo> {
   final double qel; // euclidean length
 
   public MirrorInfoComparator(long qBytesPerSeconds, int qFailureCount, int qRank) {
-    // Query: bytesPerSecondond=max + 10%, failureCountr=0, rank=1
+    // Query: bytesPerSecond=max + 10%, failureCount=0, rank=1
     this.qBytesPerSeconds = (qBytesPerSeconds + qBytesPerSeconds / 10) * WEIGHT_BYTES_PER_SECOND;
     this.qFailureCount = qFailureCount;
     this.qRank = qRank;
@@ -53,7 +53,7 @@ public class MirrorInfoComparator implements Comparator<MirrorInfo> {
     // similarities from o1 to Q and o2 to Q (where q=query)
     double sim1 = dp_1 / (qel * o1_el);
     double sim2 = dp_2 / (qel * o2_el);
-    return new Double(sim2).compareTo(new Double(sim1));
+    return new Double(sim2).compareTo(sim1);
   }
 
 }
