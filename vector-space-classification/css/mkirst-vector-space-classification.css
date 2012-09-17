@@ -193,7 +193,7 @@ ul {
   background: rgba(0, 0, 0, 0.0);
 }
 
-.mosho-active .well-background{
+.mosho-active .well-background {
   background: rgba(66, 66, 66, 0.3);
 }
 
@@ -218,7 +218,7 @@ ul {
   background: rgba(0, 0, 0, 0.0);
 }
 
-.mosho-active .white-background{
+.mosho-active .white-background {
   background: rgba(255, 255, 255, 1.0);
 }
 
@@ -242,4 +242,54 @@ ul {
   color: silver;
   font-family: "Ubuntu Mono", monospace;
   opacity: 0.66;
+}
+
+.burger-container {
+  margin-left: 150px;
+  position: relative;
+  width: 630px;
+  height: 520px;
+}
+
+.burger-container img {
+  position: absolute;
+}
+
+.pos1 {
+
+  left: 0px;
+  top: 0px;
+}
+
+.pos2 {
+  left: 210px;
+  top: 0px;
+}
+
+.pos3 {
+  left: 420px;
+  top: 0px;
+}
+
+.pos4 {
+  left: 0px;
+  bottom: 0px;
+}
+
+.pos5 {
+  left: 210px;
+  bottom: 0px;
+}
+
+.pos6 {
+  left: 420px;
+  bottom: 0px;
+}
+
+.animated {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
