@@ -41,19 +41,53 @@ mosho.plugin({
 mosho.plugin({
   name:"manage-burger-ordering",
   preShow:function (evt) {
-    var nextSlide = evt.detail.nextSlide;
-    if (nextSlide) {
-      var elements = $("#" + nextSlide.id + " .animated");
+
+    function createBurger(element, top, left, a, b, c) {
+      return {
+        propA:a,
+        propB:b,
+        propC:c,
+        posTop:top,
+        posLeft:left,
+        element:element
+      }
+    }
+
+    function initBurgerPositionsToModel(imgElements) {
+
+      var burgers = [];
+
       var ELEMENTS_PER_ROW = 3;
-      $(elements).each(function (index, element) {
+      $(imgElements).each(function (index, imgElement) {
         var propertyTop = '0px';
         if (index >= ELEMENTS_PER_ROW) {
-          propertyTop =  ($(element.parentNode).height() - element.height) + 'px';
+          propertyTop = ($(imgElement.parentNode).height() - imgElement.height) + 'px';
         }
         var propertyLeft = ((index % ELEMENTS_PER_ROW) * 210) + 'px';
-        element.style.setProperty('top', propertyTop);
-        element.style.setProperty('left', propertyLeft);
+        imgElement.style.setProperty('top', propertyTop);
+        imgElement.style.setProperty('left', propertyLeft);
+
+        var burger = createBurger(imgElement, propertyTop, propertyLeft, index, 0, 0);
+        burgers.push(burger)
       });
+
+      return burgers;
+    }
+
+    var nextSlide = evt.detail.nextSlide;
+    if (nextSlide) {
+      var imgElements = $("#" + nextSlide.id + " .animated");
+      if (imgElements.length > 0) {
+        var burgers = initBurgerPositionsToModel(imgElements);
+        $(burgers).each(function (idx, burger) {
+          var swapIdx = (idx + 1) % 6;
+          var swapBurger = burgers[swapIdx];
+          $(imgElements[idx]).click(function(clickEvent) {
+            clickEvent.target.style.top = swapBurger.posTop;
+            clickEvent.target.style.left = swapBurger.posLeft;
+          });
+        });
+      }
     }
   },
   postShow:function (evt) {
@@ -61,6 +95,7 @@ mosho.plugin({
     if (prevSlide) {
       var elements = $("#" + prevSlide.id + " .animated");
       $(elements).each(function (index, element) {
+        // by removing do restore back to CSS original styles
         element.style.removeProperty('top');
         element.style.removeProperty('left');
       });
