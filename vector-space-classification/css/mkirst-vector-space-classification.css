@@ -180,6 +180,10 @@ ul {
   list-style: none;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .well-background {
   margin: 0 auto;
   padding: 16px;
@@ -198,10 +202,20 @@ ul {
 }
 
 .auto-hide {
-  opacity: 0.25;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0.00;
 }
 
 .mosho-active .auto-hide {
+  -webkit-transition: all 1.5s;
+  -moz-transition: all 1.5s;
+  -o-transition: all 1.5s ;
+  -ms-transition: all 1.5s;
+  transition: all 1.5s;
   opacity: 1.0;
 }
 
