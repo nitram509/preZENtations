@@ -5,6 +5,7 @@
   <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
   <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Josefin+Sans|Actor' rel='stylesheet' type='text/css'>
   <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
+  <link href="css/prettify.css" rel="stylesheet" type="text/css">
   <link href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
   <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
   <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
@@ -250,8 +251,45 @@ sim(q,t) = -----------------------------------------
 
 
   <!--  ******************************************************************************  -->
+  <div class="mosho-slide" id="sample-code"
+       data-x=10000 data-y=2400 data-rotx="90"
+       >
+    <h3>Sample Code</h3>
+  <pre class="prettyprint white-code"><code class="language-java">
+public class MirrorInfoComparator implements Comparator&lt;MirrorInfo&gt; {
+
+final double refSpeed;
+final double refFailures;
+final double refDistance;
+final double refEuclidLen;
+
+public MirrorInfoComparator(long speed, int failures, int distance) {
+  refSpeed = speed;
+  refFailures = failures;
+  refDistance = distance;
+  refEuclidLen = sqrt(refSpeed * refSpeed + refFailures * refFailures + refDistance*refDistance);
+}
+
+public int compare(MirrorInfo o1, MirrorInfo o2) {
+  if (o1 == o2) return 0;
+  // euclidean lengths
+  double o1_el = sqrt(o1.speed*o1.speed + o1.failures*o1.failures + o1.distance*o1.distance);
+  double o2_el = sqrt(o2.speed*o2.speed + o2.failures*o2.failures + o2.distance*o2.distance);
+  // vector dot products
+  double dp_1 = (refSpeed *o1.speed + refFailures *o1.failures + refDistance*o1.distance);
+  double dp_2 = (refSpeed *o2.speed + refFailures *o2.failures + refDistance*o2.distance);
+  // similarities from o1 to Reference and o2 to Reference
+  double similarity1 = dp_1 / (refEuclidLen * o1_el);
+  double similarity2 = dp_2 / (refEuclidLen * o2_el);
+  return Double.compare(similarity1, similarity2);
+}
+}
+  </code></pre>
+  </div>
+
+  <!--  ******************************************************************************  -->
   <div class="mosho-slide" id="imagine"
-       data-x=7000 data-y=2400
+       data-x=8000 data-y=2400
           >
     <h3>n-dimensional</h3>
     <p>
@@ -275,6 +313,10 @@ sim(q,t) = -----------------------------------------
 </div>
 </body>
 <script src="js/mosho.js" type="text/javascript"></script>
+<script src="js/prettify.js" type="text/javascript"></script>
 <script src="js/burgers.js" type="text/javascript"></script>
 <script src="js/mkirst-vector-space-classification.js" type="text/javascript"></script>
+<script>
+  prettyPrint();
+</script>
 </html>

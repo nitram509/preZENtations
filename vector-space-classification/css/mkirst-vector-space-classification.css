@@ -219,6 +219,27 @@ strong {
   opacity: 1.0;
 }
 
+.white-code {
+  margin: 0 auto;
+  padding: 16px;
+  -webkit-border-radius: 16px;
+  -khtml-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  text-align: left;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: -1pt;
+  background: rgba(0, 0, 0, 0.0);
+}
+
+.mosho-active .white-code {
+  background: rgba(230, 230, 230, 1.0);
+}
+
 .white-background {
   margin: 0 auto;
   padding: 16px;
