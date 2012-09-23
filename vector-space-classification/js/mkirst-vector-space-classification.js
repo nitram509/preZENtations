@@ -42,49 +42,45 @@ mosho.plugin({
   name:"manage-burger-ordering",
   preShow:function (evt) {
 
-    function createBurger(element, top, left, a, b, c) {
-      return {
-        propA:a,
-        propB:b,
-        propC:c,
-        posTop:top,
-        posLeft:left,
-        element:element
-      }
-    }
-
-    function initBurgerPositionsToModel(imgElements) {
-
-      var burgers = [];
-
+    function renderBurgers(burgers) {
       var ELEMENTS_PER_ROW = 3;
-      $(imgElements).each(function (index, imgElement) {
+      burgers.forEach(function (burger, index) {
         var propertyTop = '0px';
         if (index >= ELEMENTS_PER_ROW) {
-          propertyTop = ($(imgElement.parentNode).height() - imgElement.height) + 'px';
+          propertyTop = ($(burger.element.parentNode).height() - burger.element.height) + 'px';
         }
         var propertyLeft = ((index % ELEMENTS_PER_ROW) * 210) + 'px';
-        imgElement.style.setProperty('top', propertyTop);
-        imgElement.style.setProperty('left', propertyLeft);
-
-        var burger = createBurger(imgElement, propertyTop, propertyLeft, index, 0, 0);
-        burgers.push(burger)
+        burger.element.style.setProperty('top', propertyTop);
+        burger.element.style.setProperty('left', propertyLeft);
       });
+    }
 
+    function createBurgersFromHtmlData(htmlElements) {
+      var burgers = [];
+      $(htmlElements).each(function (idx, elem) {
+        var burgerData = elem.dataset['burger']
+        if (burgerData) {
+          var meat = parseFloat(burgerData.match(/meat=(\d+[.]*\d*)/)[1]);
+          var vegetables = parseFloat(burgerData.match(/vegetables=(\d+[.]*\d*)/)[1]);
+          var bakedColor = parseFloat(burgerData.match(/bakedcolor=(\d+[.]*\d*)/)[1]);
+          burgers.push(createBurger(meat, vegetables, bakedColor, elem));
+        }
+      });
+      renderBurgers(burgers);
       return burgers;
     }
 
     var nextSlide = evt.detail.nextSlide;
     if (nextSlide) {
-      var imgElements = $("#" + nextSlide.id + " .animated");
+      var imgElements = $("#" + nextSlide.id + " .burger");
       if (imgElements.length > 0) {
-        var burgers = initBurgerPositionsToModel(imgElements);
+        var burgers = createBurgersFromHtmlData(imgElements);
         $(burgers).each(function (idx, burger) {
-          var swapIdx = (idx + 1) % 6;
-          var swapBurger = burgers[swapIdx];
-          $(imgElements[idx]).click(function(clickEvent) {
-            clickEvent.target.style.top = swapBurger.posTop;
-            clickEvent.target.style.left = swapBurger.posLeft;
+          $(imgElements[idx]).click(function (clickEvent) {
+            var refBurger = createBurgersFromHtmlData([clickEvent.target])[0];
+            var comparator = createBurgerComparator_withReference(refBurger.meat, refBurger.vegetables, refBurger.bakedColor);
+            burgers.sort(comparator);
+            renderBurgers(burgers);
           });
         });
       }
@@ -93,7 +89,7 @@ mosho.plugin({
   postShow:function (evt) {
     var prevSlide = evt.detail.prevSlide;
     if (prevSlide) {
-      var elements = $("#" + prevSlide.id + " .animated");
+      var elements = $("#" + prevSlide.id + " .burger");
       $(elements).each(function (index, element) {
         // by removing do restore back to CSS original styles
         element.style.removeProperty('top');
