@@ -26,6 +26,19 @@ mosho.plugin({
 });
 
 mosho.plugin({
+  name:"elements_fade_in_very_slow",
+  preShow:function (event) {
+    var nextSlide = event.detail.nextSlide;
+    if (nextSlide) {
+      var fadeInElements = $("#" + nextSlide.id + " .fade-in-very-slow");
+      $(fadeInElements).each(function (index, element) {
+        $(element).delay((1 + index) * 5000).fadeTo('normal', 1)
+      });
+    }
+  }
+});
+
+mosho.plugin({
   name:"elements_fade_out",
   postShow:function (evt) {
     var prevSlide = evt.detail.prevSlide;

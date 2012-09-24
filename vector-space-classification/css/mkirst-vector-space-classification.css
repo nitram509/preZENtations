@@ -164,7 +164,7 @@ table.code td {
   background: rgba(0, 0, 0, 0.3);
 }
 
-.fade-in, .fade-out {
+.fade-in, .fade-out, .fade-in-very-slow {
   opacity: 0.0;
 }
 
@@ -180,7 +180,7 @@ ul {
   list-style: none;
 }
 
-strong {
+strong, b  {
   font-weight: bold;
 }
 
