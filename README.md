@@ -1,2 +1,3 @@
 Some presentations I did ...
-Have a loot at http://nitram509.github.com/preZENtations/
+
+Have a look at http://nitram509.github.com/preZENtations/
