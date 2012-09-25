@@ -83,19 +83,63 @@ mosho.plugin({
       return burgers;
     }
 
+    function updateBurgerControls(burger) {
+      $("#slider-Meat").slider("value", burger.meat);
+      $("#slider-Vegetables").slider("value", burger.vegetables);
+      $("#slider-BakedColor").slider("value", burger.bakedColor);
+    }
+
+    function initBurgerControlSliders() {
+      $("#slider-Meat").slider({max:30, min:1, step:1});
+      $("#slider-Meat").bind("slidechange", function (event, ui) {
+        $("#meat-value").text(ui.value);
+      });
+      $("#slider-Vegetables").slider({max:30, min:1, step:1});
+      $("#slider-Vegetables").bind("slidechange", function (event, ui) {
+        $("#vegetables-value").text(ui.value);
+      });
+      $("#slider-BakedColor").slider({max:2, min:1, step:0.1});
+      $("#slider-BakedColor").bind("slidechange", function (event, ui) {
+        $("#baked-color-value").text(ui.value);
+      });
+      updateBurgerControls(createBurger(1, 1, 1.0, null));
+    }
+
+    function sortAndRenderBurgerByReference(refBurger, burgers) {
+      var comparator = createBurgerComparator_withReference(refBurger.meat, refBurger.vegetables, refBurger.bakedColor);
+      burgers.sort(comparator);
+      renderBurgers(burgers);
+      updateBurgerControls(refBurger);
+    }
+
+    function onSlideChange(burgers) {
+      return function(event, ui) {
+        if (typeof event.originalEvent == 'undefined') {
+          return;
+        }
+        var meat = $("#slider-Meat").slider("value");
+        var vegetables = $("#slider-Vegetables").slider("value");
+        var bakedColor = $("#slider-BakedColor").slider("value");
+        var refBurger = createBurger(meat, vegetables, bakedColor, null);
+        sortAndRenderBurgerByReference(refBurger, burgers);
+      }
+    }
+
     var nextSlide = evt.detail.nextSlide;
     if (nextSlide) {
       var imgElements = $("#" + nextSlide.id + " .burger");
       if (imgElements.length > 0) {
         var burgers = createBurgersFromHtmlData(imgElements);
+        initBurgerControlSliders();
         $(burgers).each(function (idx, burger) {
           $(imgElements[idx]).click(function (clickEvent) {
             var refBurger = createBurgersFromHtmlData([clickEvent.target])[0];
-            var comparator = createBurgerComparator_withReference(refBurger.meat, refBurger.vegetables, refBurger.bakedColor);
-            burgers.sort(comparator);
-            renderBurgers(burgers);
+            sortAndRenderBurgerByReference(refBurger, burgers);
           });
         });
+        $("#slider-Meat").bind("slidechange", onSlideChange(burgers));
+        $("#slider-Vegetables").bind("slidechange", onSlideChange(burgers));
+        $("#slider-BakedColor").bind("slidechange", onSlideChange(burgers));
       }
     }
   },
@@ -108,6 +152,28 @@ mosho.plugin({
         element.style.removeProperty('top');
         element.style.removeProperty('left');
       });
+    }
+  }
+});
+
+mosho.plugin({
+  name:"Super_Duper_Burger_Sorting_Controls",
+  preShow:function (event) {
+    var nextSlide = event.detail.nextSlide;
+    if (nextSlide) {
+      var hasShowBurgerControlsClass = $("#" + nextSlide.id + " .show-burger-controls");
+      if (hasShowBurgerControlsClass.length > 0) {
+        $("#burger-sort-controls").delay(750).fadeIn();
+      }
+    }
+  },
+  postShow:function (evt) {
+    var prevSlide = evt.detail.prevSlide;
+    if (prevSlide) {
+      var hasShowBurgerControlsClass = $("#" + prevSlide.id + " .show-burger-controls");
+      if (hasShowBurgerControlsClass.length > 0) {
+        $("#burger-sort-controls").fadeOut();
+      }
     }
   }
 });
