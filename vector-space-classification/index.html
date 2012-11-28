@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="de">
 <head>
+  <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="author" content="Martin W. Kirst">
   <meta name="keywords"
         content="presentation, vector space classification, rocchio training, classification algorithm, eclipse bug-ID 317785, java code example, javascript code example">
   <meta name="description"
         content="A presentation, describing theory about vector space classification and how to create a working code for it. Examples are written in Java & Javascript.">
-  <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
   <link href="css/fonts.css" rel="stylesheet" type="text/css">
   <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
   <link href="css/prettify.css" rel="stylesheet" type="text/css">
@@ -15,205 +15,277 @@
   <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="js/jquery-ui-1.8.23.min.js" type="text/javascript"></script>
 
+  <style type="text/css">
+    span[lang=de], cite[lang=de] {
+      display: none;
+    }
+  </style>
+
 </head>
 <body>
 <div id="mosho">
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="titel"
-       data-x="-1200" data-y="-1200"
-       data-scale=1
-       data-prev="links">
-    <h2>Domänen-Objekte sortieren mit</h2>
-    <h2>Vector Space Classification</h2>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="titel"
+     data-x="-1200" data-y="-1200"
+     data-scale=1
+     data-prev="links">
+  <h2>
+    <span lang="de">Domänen-Objekte sortieren mit</span>
+    <span lang="en">Sorting Domain Objects via</span>
+  </h2>
 
-    <p>Martin W. Kirst</p>
-    <small>&copy; 09/2012, Hypoport AG</small>
-  </div>
+  <h2>Vector Space Classification</h2>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="intro-question"
-       data-x=1400>
-    <h2>Was gab's heute Mittag?</h2>
-    <h3 class="fade-in-very-slow fade-out">vielleicht ...</h3>
-  </div>
+  <p>Martin W. Kirst</p>
+  <small>&copy; 09/2012, Hypoport AG</small>
+</div>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="burger"
-       data-x=2800>
-    <h2>Arrays.sort() ?</h2>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="intro-question"
+     data-x=1400>
+  <h2>
+    <span lang="de">Was gab's heute Mittag?</span>
+    <span lang="en">What did you eat for lunch?</span>
+  </h2>
 
-    <p class="burger-container">
-      <img class="fade-in fade-out pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png" height="183" data-burger="meat=10, vegetables=5, bakedcolor=1.2" title="meat=10, vegetables=5, bakedcolor=1.2"/>
-      <img class="fade-in fade-out pos2 animated burger" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png" height="189" data-burger="meat=15, vegetables=5, bakedcolor=1.5" title="meat=15, vegetables=5, bakedcolor=1.3"/>
-      <img class="fade-in fade-out pos3 animated burger" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png" height="226" data-burger="meat=10, vegetables=15, bakedcolor=1.1" title="meat=10, vegetables=15, bakedcolor=1.1"/>
-      <img class="fade-in fade-out pos4 animated burger" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png" height="269" data-burger="meat=15, vegetables=20, bakedcolor=1.5" title="meat=15, vegetables=20, bakedcolor=1.4"/>
-      <img class="fade-in fade-out pos5 animated burger" src="images/burger-a70eddc4277766515035e7e17297a57a.png" height="175" data-burger="meat=10, vegetables=10, bakedcolor=1.2" title="meat=10, vegetables=10, bakedcolor=1.2"/>
-      <img class="fade-in fade-out pos6 animated burger" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png" height="171" data-burger="meat=10, vegetables=10, bakedcolor=1.6" title="meat=10, vegetables=10, bakedcolor=1.6"/>
-    </p>
-    <p class="legend">
-      <small><small><small>
-        http://www.behance.net/gallery/burger/5023037 &nbsp; (CC BY-NC-ND 3.0)
-      </small></small></small>
-    </p>
-  </div>
+  <h3 class="fade-in-very-slow fade-out">
+    <span lang="de">vielleicht ...</span>
+    <span lang="en">maybe ...</span>
+  </h3>
+</div>
 
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="burger"
+     data-x=2800>
+  <h2>Arrays.sort() ?</h2>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="sortiere-server"
-       data-x=4400 data-y=0 data-z=1000
-       data-transition="2s ease">
-    <h4>Herausforderung bei Eclipse:<br/>
-      Sortiere die Mirror-Server</h4>
-    <table class="code">
-      <thead>
-      <tr>
-        <td>Bytes/Sek</td>
-        <td>&#216;Fehler</td>
-        <td>Entfernung(km)</td>
-        <td>URL</td>
-      </tr>
-      </thead>
-      <tr>
-        <td>140.200</td>
-        <td>2</td>
-        <td>&nbsp;200</td>
-        <td>http://www... .de</td>
-      </tr>
-      <tr>
-        <td>125.000</td>
-        <td>1</td>
-        <td>&nbsp;900</td>
-        <td>http://www... .fr</td>
-      </tr>
-      <tr>
-        <td>200.000</td>
-        <td>3</td>
-        <td>1200</td>
-        <td>http://www... .se</td>
-      </tr>
-      <tr>
-        <td>
-          <small>...</small>
-        </td>
-        <td>
-          <small>...</small>
-        </td>
-        <td>
-          <small>...</small>
-        </td>
-        <td>
-          <small>...</small>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <p class="burger-container">
+    <img class="fade-in fade-out pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"
+         height="183" data-burger="meat=10, vegetables=5, bakedcolor=1.2"
+         title="meat=10, vegetables=5, bakedcolor=1.2"/>
+    <img class="fade-in fade-out pos2 animated burger" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png"
+         height="189" data-burger="meat=15, vegetables=5, bakedcolor=1.5"
+         title="meat=15, vegetables=5, bakedcolor=1.3"/>
+    <img class="fade-in fade-out pos3 animated burger" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png"
+         height="226" data-burger="meat=10, vegetables=15, bakedcolor=1.1"
+         title="meat=10, vegetables=15, bakedcolor=1.1"/>
+    <img class="fade-in fade-out pos4 animated burger" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png"
+         height="269" data-burger="meat=15, vegetables=20, bakedcolor=1.5"
+         title="meat=15, vegetables=20, bakedcolor=1.4"/>
+    <img class="fade-in fade-out pos5 animated burger" src="images/burger-a70eddc4277766515035e7e17297a57a.png"
+         height="175" data-burger="meat=10, vegetables=10, bakedcolor=1.2"
+         title="meat=10, vegetables=10, bakedcolor=1.2"/>
+    <img class="fade-in fade-out pos6 animated burger" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png"
+         height="171" data-burger="meat=10, vegetables=10, bakedcolor=1.6"
+         title="meat=10, vegetables=10, bakedcolor=1.6"/>
+  </p>
+
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          http://www.behance.net/gallery/burger/5023037 &nbsp; (CC BY-NC-ND 3.0)
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="wikipedia-definition"
-       data-x=1400 data-y=1200
-       >
-    <h2>
-      <img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo"/>
-    </h2>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="sortiere-server"
+     data-x=4400 data-y=0 data-z=1000
+     data-transition="2s ease">
+  <h4>
+    <span lang="de">Herausforderung bei Eclipse:<br/>Sortiere die Mirror-Server</span>
+    <span lang="en">Challenge in Eclipse:<br/>Sort the mirror server</span>
+  </h4>
+  <table class="code">
+    <thead>
+    <tr>
+      <td>
+        <span lang="de">Bytes/Sek</span>
+        <span lang="en">Bytes/Sec</span>
+      </td>
+      <td>&#216;
+        <span lang="de">Fehler</span>
+        <span lang="en">Errors</span>
+      </td>
+      <td>
+        <span lang="de">Entfernung(km)</span>
+        <span lang="en">Distance(km)</span>
+      </td>
+      <td>URL</td>
+    </tr>
+    </thead>
+    <tr>
+      <td>140.200</td>
+      <td>2</td>
+      <td>&nbsp;200</td>
+      <td>http://www... .de</td>
+    </tr>
+    <tr>
+      <td>125.000</td>
+      <td>1</td>
+      <td>&nbsp;900</td>
+      <td>http://www... .fr</td>
+    </tr>
+    <tr>
+      <td>200.000</td>
+      <td>3</td>
+      <td>1200</td>
+      <td>http://www... .se</td>
+    </tr>
+    <tr>
+      <td>
+        <small>...</small>
+      </td>
+      <td>
+        <small>...</small>
+      </td>
+      <td>
+        <small>...</small>
+      </td>
+      <td>
+        <small>...</small>
+      </td>
+    </tr>
+  </table>
+</div>
 
-    <p class="well-background" style="text-align: justify">
-      <cite>
-        „
-        Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
-        anhand ihrer Merkmale in vorgegebene Kategorien einordnet.
-        <small>[...]</small>
-        <br>
-        Der Begriff Klassifikator wird meist spezifisch für solche Algorithmen verwendet,
-        in denen der Klassifikation von Objekten eine Lernphase ('Training') vorausgeht.
-        “
-      </cite>
-    </p>
-  </div>
+
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="wikipedia-definition"
+     data-x=1400 data-y=1200
+        >
+  <h2>
+    <img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo"/>
+  </h2>
+
+  <p class="well-background" style="text-align: justify">
+    <cite lang="de">
+      „
+      Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
+      anhand ihrer Merkmale in vorgegebene Kategorien einordnet.
+      <small>[...]</small>
+      <br>
+      Der Begriff Klassifikator wird meist spezifisch für solche Algorithmen verwendet,
+      in denen der Klassifikation von Objekten eine Lernphase ('Training') vorausgeht.
+      “
+    </cite>
+    <cite lang="en">
+      „
+      Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
+      anhand ihrer Merkmale in vorgegebene Kategorien einordnet.
+      <small>[...]</small>
+      <br>
+      Der Begriff Klassifikator wird meist spezifisch für solche Algorithmen verwendet,
+      in denen der Klassifikation von Objekten eine Lernphase ('Training') vorausgeht.
+      “
+    </cite>
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="usage"
-       data-x=2800 data-y=1200
-       >
-    <h3>Typische Verwendung</h3>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="usage"
+     data-x=2800 data-y=1200
+        >
+  <h3>
+    <span lang="de">Typische Verwendung</span>
+    <span lang="en">Typical usage</span>
+  </h3>
 
-    <ul>
-      <li>Suchen (Dokumente)</li>
-      <li>Spam-Filter (Bayes Filter)</li>
-      <li>Produktempfehlungen</li>
-      <li>(...)</li>
-    </ul>
-  </div>
+  <ul>
+    <li>
+      <span lang="de">Suchen (Dokumente)</span>
+      <span lang="en">Search (documents)</span>
+    </li>
+    <li>Spam filter (Bayes filter)</li>
+    <li>Produktempfehlungen</li>
+    <li>(...)</li>
+  </ul>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="ansatz"
-       data-x=4400 data-y=1200 data-z=1000
-       >
-    <h3>Lösungsansatz</h3>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="ansatz"
+     data-x=4400 data-y=1200 data-z=1000
+        >
+  <h3>Lösungsansatz</h3>
 
-    <p><b>
-      Vector Space Classification<br>
-      mit<br>
-      Training ähnlich Rocchio</b>
-    </p>
-  </div>
+  <p><b>
+    Vector Space Classification<br>
+    mit<br>
+    Training ähnlich Rocchio</b>
+  </p>
+</div>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="vektoren"
-       data-x=1400 data-y=2400 data-z=2000
-       >
-    <h3>Vektoren</h3>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="vektoren"
+     data-x=1400 data-y=2400 data-z=2000
+        >
+  <h3>Vektoren</h3>
 
-      <p>
-        <img class="auto-hide white-background" src="images/MSP27551a32fd06e5c492e400006843aga8c534ahde.png" alt="vektoren"/>
-      </p>
+  <p>
+    <img class="auto-hide white-background" src="images/MSP27551a32fd06e5c492e400006843aga8c534ahde.png"
+         alt="vektoren"/>
+  </p>
 
-      <p class="legend">
-        <small><small><small>
+  <p class="legend">
+    <small>
+      <small>
+        <small>
           http://www.wolframalpha.com/input/?i=vector+{2%2c+3%2c+4}%2c+{5%2c+1%2c+3}
-        </small></small></small>
-      </p>
-  </div>
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="analytische-geometrie"
-       data-x=2800 data-y=2400 data-z=2000
-       >
-    <h3>Analytische Geometrie</h3>
-    <ul>
-      <li>Addition/Subtraktion</li>
-      <li>Skalarprodukt &#8793; Winkel</li>
-      <li>Kreuzprodukt</li>
-      <li>Länge/Betrag</li>
-      <li><strong>Einheitsvektor</strong></li>
-      <li><strong>Euklidischer Abstand</strong></li>
-    </ul>
-  </div>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="analytische-geometrie"
+     data-x=2800 data-y=2400 data-z=2000
+        >
+  <h3>Analytische Geometrie</h3>
+  <ul>
+    <li>Addition/Subtraktion</li>
+    <li>Skalarprodukt &#8793; Winkel</li>
+    <li>Kreuzprodukt</li>
+    <li>Länge/Betrag</li>
+    <li><strong>Einheitsvektor</strong></li>
+    <li><strong>Euklidischer Abstand</strong></li>
+  </ul>
+</div>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="erklaerung"
-       data-x=4200 data-y=2400 data-z=2000
-       >
-    <h3>Vereinfacht</h3>
-    <p>
-      <img class="auto-hide" style="width: 55%; height: 55%; margin: 25px;" src="images/Rechte-hand-regel-ex.png"
-           alt="rechte Hand ... Erklärung am Beispiel von Vektoren im Raum">
-    </p>
-    <p class="legend">
-      <small><small><small>
-        http://en.wikipedia.org/wiki/File:Rechte-hand-regel.jpg &nbsp; (CC BY-SA 3.0)
-      </small></small></small>
-    </p>
-  </div>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="erklaerung"
+     data-x=4200 data-y=2400 data-z=2000
+        >
+  <h3>Vereinfacht</h3>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="import-math-1"
-       data-x=6000 data-y=2400  data-rotx="90"
-          >
-    <h3>Import Math.*</h3>
+  <p>
+    <img class="auto-hide" style="width: 55%; height: 55%; margin: 25px;" src="images/Rechte-hand-regel-ex.png"
+         alt="rechte Hand ... Erklärung am Beispiel von Vektoren im Raum">
+  </p>
+
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          http://en.wikipedia.org/wiki/File:Rechte-hand-regel.jpg &nbsp; (CC BY-SA 3.0)
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
+
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="import-math-1"
+     data-x=6000 data-y=2400 data-rotx="90"
+        >
+  <h3>Import Math.*</h3>
 <pre class="code-math">
                     ->   ->
                     q  * t                       (dot product)
@@ -222,18 +294,22 @@ sim(q,t) = ---------------------------
             |  || q  || * || t  ||  |      (euclidean lengths)
              \                     /
 </pre>
-    <p class="legend">
-      <small><small><small>
-        JavE5.0://sim(q,t) = vec(q) * vec(t) /  ( ||vec(q)|| * ||vec(t)|| )
-      </small></small></small>
-    </p>
-    </div>
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          JavE5.0://sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="import-math-2"
-       data-x=8000 data-y=2400 data-rotx="90"
-       >
-    <h3>Import Math.*</h3>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="import-math-2"
+     data-x=8000 data-y=2400 data-rotx="90"
+        >
+  <h3>Import Math.*</h3>
 <pre class="code-math">
                             N
                            ---
@@ -252,122 +328,148 @@ sim(q,t) = -----------------------------------------
             |     |  ---            |  ---        |
              \    | i = 1           | i = 1      /
 </pre>
-    <p class="legend">
-      <small><small><small>
-        JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) /  (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
-      </small></small></small>
-    </p>
-  </div>
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="sample-code"
-       data-x=10000 data-y=2400 data-rotx="90"
-       >
-    <h3>Sample Code</h3>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="sample-code"
+     data-x=10000 data-y=2400 data-rotx="90"
+        >
+  <h3>Sample Code</h3>
   <pre class="prettyprint white-code"><code class="language-java">
-public class MirrorInfoComparator implements Comparator&lt;MirrorInfo&gt; {
+    public class MirrorInfoComparator implements Comparator&lt;MirrorInfo&gt; {
 
-final double refSpeed;
-final double refFailures;
-final double refDistance;
-final double refEuclidLen;
+    final double refSpeed;
+    final double refFailures;
+    final double refDistance;
+    final double refEuclidLen;
 
-public MirrorInfoComparator(long speed, int failures, int distance) {
-  refSpeed = speed;
-  refFailures = failures;
-  refDistance = distance;
-  refEuclidLen = sqrt(refSpeed * refSpeed + refFailures * refFailures + refDistance*refDistance);
-}
+    public MirrorInfoComparator(long speed, int failures, int distance) {
+    refSpeed = speed;
+    refFailures = failures;
+    refDistance = distance;
+    refEuclidLen = sqrt(refSpeed * refSpeed + refFailures * refFailures + refDistance*refDistance);
+    }
 
-public int compare(MirrorInfo o1, MirrorInfo o2) {
-  if (o1 == o2) return 0;
-  // euclidean lengths
-  double o1_el = sqrt(o1.speed*o1.speed + o1.failures*o1.failures + o1.distance*o1.distance);
-  double o2_el = sqrt(o2.speed*o2.speed + o2.failures*o2.failures + o2.distance*o2.distance);
-  // vector dot products
-  double dp_1 = (refSpeed *o1.speed + refFailures *o1.failures + refDistance*o1.distance);
-  double dp_2 = (refSpeed *o2.speed + refFailures *o2.failures + refDistance*o2.distance);
-  // similarities from o1 to Reference and o2 to Reference
-  double similarity1 = dp_1 / (refEuclidLen * o1_el);
-  double similarity2 = dp_2 / (refEuclidLen * o2_el);
-  return Double.compare(similarity1, similarity2);
-}
-}
+    public int compare(MirrorInfo o1, MirrorInfo o2) {
+    if (o1 == o2) return 0;
+    // euclidean lengths
+    double o1_el = sqrt(o1.speed*o1.speed + o1.failures*o1.failures + o1.distance*o1.distance);
+    double o2_el = sqrt(o2.speed*o2.speed + o2.failures*o2.failures + o2.distance*o2.distance);
+    // vector dot products
+    double dp_1 = (refSpeed *o1.speed + refFailures *o1.failures + refDistance*o1.distance);
+    double dp_2 = (refSpeed *o2.speed + refFailures *o2.failures + refDistance*o2.distance);
+    // similarities from o1 to Reference and o2 to Reference
+    double similarity1 = dp_1 / (refEuclidLen * o1_el);
+    double similarity2 = dp_2 / (refEuclidLen * o2_el);
+    return Double.compare(similarity1, similarity2);
+    }
+    }
   </code></pre>
-  </div>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="imagine"
-       data-x=8000 data-y=2400
-       >
-    <h3>n-dimensional</h3>
-    <p>
-      It's math ;-)
-    </p>
-  </div>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="imagine"
+     data-x=8000 data-y=2400
+        >
+  <h3>n-dimensional</h3>
+
+  <p>
+    It's math ;-)
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="thank-you"
-       data-x=0 data-y=1200 data-rotx="90"
-       >
-    <h1>Vielen Dank</h1>
-    <p style="color: gray;">
-      <span class="fade-in">.</span>
-      <span class="fade-in">.</span>
-      <span class="fade-in">.</span>
-      <span class="fade-in-very-slow">.</span>
-      <span class="fade-in-very-slow">.</span>
-      <span class="fade-in-very-slow">.</span>
-    </p>
-    <p class="fade-in-very-slow fade-out">
-      <a href="#burger-special">Burger Special</a>
-    </p>
-  </div>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="thank-you"
+     data-x=0 data-y=1200 data-rotx="90"
+        >
+  <h1>Vielen Dank</h1>
+
+  <p style="color: gray;">
+    <span class="fade-in">.</span>
+    <span class="fade-in">.</span>
+    <span class="fade-in">.</span>
+    <span class="fade-in-very-slow">.</span>
+    <span class="fade-in-very-slow">.</span>
+    <span class="fade-in-very-slow">.</span>
+  </p>
+
+  <p class="fade-in-very-slow fade-out">
+    <a href="#burger-special">Burger Special</a>
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="links"
-       data-x=0 data-y=2400
-       data-next="titel"
-       >
-    <h2>Links</h2>
-    <p>
-      Eclipse Bug „Synchronization problem in mirror selection“<br/>
-      <small>https://bugs.eclipse.org/bugs/show_bug.cgi?id=317785</small>
-    </p>
-    <p><!-- --><br/><!-- --></p>
-    <p>
-      This presentation on github.com:<br/>
-      <small>http://nitram509.github.com/preZENtations/vector-space-classification/index.html</small>
-    </p>
-  </div>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="links"
+     data-x=0 data-y=2400
+     data-next="titel"
+        >
+  <h2>Links</h2>
+
+  <p>
+    Eclipse Bug „Synchronization problem in mirror selection“<br/>
+    <small>https://bugs.eclipse.org/bugs/show_bug.cgi?id=317785</small>
+  </p>
+  <p><!-- --><br/><!-- --></p>
+
+  <p>
+    This presentation on github.com:<br/>
+    <small>http://nitram509.github.com/preZENtations/vector-space-classification/index.html</small>
+  </p>
+</div>
 
 
-  <!--  ******************************************************************************  -->
-  <div class="mosho-slide" id="burger-special"
-       data-x=0 data-y=5000
-       data-next="thank-you"
-       data-prev="thank-you"
-       >
-    <h2 class="auto-hide">Burger Special</h2>
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="burger-special"
+     data-x=0 data-y=5000
+     data-next="thank-you"
+     data-prev="thank-you"
+        >
+  <h2 class="auto-hide">Burger Special</h2>
 
-    <p class="burger-container show-burger-controls">
-      <img class="auto-hide pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png" height="183" data-burger="meat=10, vegetables=5, bakedcolor=1.2" title="meat=10, vegetables=5, bakedcolor=1.2"/>
-      <img class="auto-hide pos2 animated burger" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png" height="189" data-burger="meat=15, vegetables=5, bakedcolor=1.5" title="meat=15, vegetables=5, bakedcolor=1.3"/>
-      <img class="auto-hide pos3 animated burger" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png" height="226" data-burger="meat=10, vegetables=15, bakedcolor=1.1" title="meat=10, vegetables=15, bakedcolor=1.1"/>
-      <img class="auto-hide pos4 animated burger" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png" height="269" data-burger="meat=15, vegetables=20, bakedcolor=1.5" title="meat=15, vegetables=20, bakedcolor=1.4"/>
-      <img class="auto-hide pos5 animated burger" src="images/burger-a70eddc4277766515035e7e17297a57a.png" height="175" data-burger="meat=10, vegetables=10, bakedcolor=1.2" title="meat=10, vegetables=10, bakedcolor=1.2"/>
-      <img class="auto-hide pos6 animated burger" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png" height="171" data-burger="meat=10, vegetables=10, bakedcolor=1.6" title="meat=10, vegetables=10, bakedcolor=1.6"/>
-    </p>
-    <p class="auto-hide legend">
-      <small><small><small>
-        http://www.behance.net/gallery/burger/5023037 &nbsp; (CC BY-NC-ND 3.0)
-      </small></small></small>
-    </p>
-  </div>
+  <p class="burger-container show-burger-controls">
+    <img class="auto-hide pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"
+         height="183" data-burger="meat=10, vegetables=5, bakedcolor=1.2"
+         title="meat=10, vegetables=5, bakedcolor=1.2"/>
+    <img class="auto-hide pos2 animated burger" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png"
+         height="189" data-burger="meat=15, vegetables=5, bakedcolor=1.5"
+         title="meat=15, vegetables=5, bakedcolor=1.3"/>
+    <img class="auto-hide pos3 animated burger" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png"
+         height="226" data-burger="meat=10, vegetables=15, bakedcolor=1.1"
+         title="meat=10, vegetables=15, bakedcolor=1.1"/>
+    <img class="auto-hide pos4 animated burger" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png"
+         height="269" data-burger="meat=15, vegetables=20, bakedcolor=1.5"
+         title="meat=15, vegetables=20, bakedcolor=1.4"/>
+    <img class="auto-hide pos5 animated burger" src="images/burger-a70eddc4277766515035e7e17297a57a.png"
+         height="175" data-burger="meat=10, vegetables=10, bakedcolor=1.2"
+         title="meat=10, vegetables=10, bakedcolor=1.2"/>
+    <img class="auto-hide pos6 animated burger" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png"
+         height="171" data-burger="meat=10, vegetables=10, bakedcolor=1.6"
+         title="meat=10, vegetables=10, bakedcolor=1.6"/>
+  </p>
+
+  <p class="auto-hide legend">
+    <small>
+      <small>
+        <small>
+          http://www.behance.net/gallery/burger/5023037 &nbsp; (CC BY-NC-ND 3.0)
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
 
 </div>
 
@@ -375,14 +477,17 @@ public int compare(MirrorInfo o1, MirrorInfo o2) {
   <ul>
     <li>
       Meat: <span id="meat-value"></span>
+
       <div id="slider-Meat" class="mysliders"></div>
     </li>
     <li>
       Vegetables: <span id="vegetables-value"></span>
+
       <div id="slider-Vegetables" class="mysliders"></div>
     </li>
     <li>
       Baked color: <span id="baked-color-value"></span>
+
       <div id="slider-BakedColor" class="mysliders"></div>
     </li>
   </ul>
