@@ -526,3 +526,11 @@ strong, b {
   -khtml-border-bottom-right-radius: 4px /*{cornerRadius}*/;
   border-bottom-right-radius: 4px /*{cornerRadius}*/;
 }
+
+#title .profile-links a {
+  background: none !important;
+}
+
+#title .profile-links img {
+  vertical-align: middle;
+}
