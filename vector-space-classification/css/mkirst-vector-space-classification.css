@@ -437,7 +437,7 @@ strong, b {
 .ui-slider-horizontal .ui-slider-handle {
   top: -5px;
   margin-left: -5px;
-  background:  mediumseagreen !important;
+  background: mediumseagreen !important;
 }
 
 .ui-slider-horizontal .ui-slider-range {
@@ -533,4 +533,14 @@ strong, b {
 
 #title .profile-links img {
   vertical-align: middle;
+}
+
+td.ignore {
+  color: #2f4f4f;
+}
+
+td.chosen {
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
 }
