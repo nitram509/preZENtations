@@ -365,8 +365,58 @@ sim(q,t) = -----------------------------------------
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="sample-code"
+<div class="mosho-slide" id="training"
      data-x=10000 data-y=2400 data-rotx="90"
+        >
+  <h3>Training</h3>
+
+  <p>
+    <span lang="en">For each attribute choose the best value</span>
+    <span lang="de">Wähle den besten Wert pro Attribut</span>
+  </p>
+  <table class="code">
+    <thead>
+    <tr>
+      <td>
+        <span lang="de">Bytes/Sek</span>
+        <span lang="en">Bytes/Sec</span>
+      </td>
+      <td>&#216;
+        <span lang="de">Fehler</span>
+        <span lang="en">Errors</span>
+      </td>
+      <td>
+        <span lang="de">Entfernung(km)</span>
+        <span lang="en">Distance(km)</span>
+      </td>
+      <td>URL</td>
+    </tr>
+    </thead>
+    <tr>
+      <td class="ignore">140.200</td>
+      <td class="ignore">2</td>
+      <td class="chosen">&nbsp;200</td>
+      <td class="ignore">http://www... .de</td>
+    </tr>
+    <tr>
+      <td class="ignore">125.000</td>
+      <td class="chosen">1</td>
+      <td class="ignore">&nbsp;900</td>
+      <td class="ignore">http://www... .fr</td>
+    </tr>
+    <tr>
+      <td class="chosen">200.000</td>
+      <td class="ignore">3</td>
+      <td class="ignore">1200</td>
+      <td class="ignore">http://www... .se</td>
+    </tr>
+  </table>
+
+</div>
+
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="sample-code"
+     data-x=12000 data-y=2400 data-rotx="90"
         >
   <h3>Sample Code</h3>
   <pre class="prettyprint white-code"><code class="language-java">
