@@ -1,15 +1,23 @@
 function switchLanguage(targetLanguage) {
+  var lang = targetLanguage || 'de';
+  lang = lang.substr(0, Math.min(lang.length, 2));
   if (targetLanguage == 'de') {
     $('span[lang=en]').hide();
     $('cite[lang=en]').hide();
+    $('.btn-lang-en').removeClass('active');
+
     $('span[lang=de]').show();
     $('cite[lang=de]').show();
+    $('.btn-lang-de').addClass('active');
   }
   if (targetLanguage == 'en') {
     $('span[lang=de]').hide();
     $('cite[lang=de]').hide();
+    $('.btn-lang-de').removeClass('active');
+
     $('span[lang=en]').show();
     $('cite[lang=en]').show();
+    $('.btn-lang-en').addClass('active');
   }
 }
 

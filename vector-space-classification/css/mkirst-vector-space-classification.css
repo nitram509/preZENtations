@@ -563,3 +563,7 @@ td.chosen {
   margin: 0;
   border: 1px solid;
 }
+
+.language-selector.active {
+  text-decoration: underline;
+}
