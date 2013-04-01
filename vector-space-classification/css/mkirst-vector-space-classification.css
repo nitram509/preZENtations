@@ -544,3 +544,22 @@ td.chosen {
   color: white;
   text-decoration: underline;
 }
+
+.language-selector {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+
+  margin: 1px;
+  border: none;
+  background: rgba(50, 50, 50, 1);
+  color: silver;
+  cursor: pointer;
+  padding: 3px 6px 3px 6px;
+}
+
+.language-selector:hover {
+  margin: 0;
+  border: 1px solid;
+}

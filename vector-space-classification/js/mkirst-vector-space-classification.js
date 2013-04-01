@@ -1,6 +1,21 @@
+function switchLanguage(targetLanguage) {
+  if (targetLanguage == 'de') {
+    $('span[lang=en]').hide();
+    $('cite[lang=en]').hide();
+    $('span[lang=de]').show();
+    $('cite[lang=de]').show();
+  }
+  if (targetLanguage == 'en') {
+    $('span[lang=de]').hide();
+    $('cite[lang=de]').hide();
+    $('span[lang=en]').show();
+    $('cite[lang=en]').show();
+  }
+}
+
 mosho.plugin({
-  name:"scaleActiveSlide",
-  preShow:function (evt) {
+  name: "scaleActiveSlide",
+  preShow: function (evt) {
     var prevSlide = evt.detail.prevSlide;
     var nextSlide = evt.detail.nextSlide;
     if (prevSlide) {
@@ -13,8 +28,8 @@ mosho.plugin({
 });
 
 mosho.plugin({
-  name:"elements_fade_in",
-  preShow:function (event) {
+  name: "elements_fade_in",
+  preShow: function (event) {
     var nextSlide = event.detail.nextSlide;
     if (nextSlide) {
       var fadeInElements = $("#" + nextSlide.id + " .fade-in");
@@ -26,8 +41,8 @@ mosho.plugin({
 });
 
 mosho.plugin({
-  name:"elements_fade_in_very_slow",
-  preShow:function (event) {
+  name: "elements_fade_in_very_slow",
+  preShow: function (event) {
     var nextSlide = event.detail.nextSlide;
     if (nextSlide) {
       var fadeInElements = $("#" + nextSlide.id + " .fade-in-very-slow");
@@ -39,8 +54,8 @@ mosho.plugin({
 });
 
 mosho.plugin({
-  name:"elements_fade_out",
-  postShow:function (evt) {
+  name: "elements_fade_out",
+  postShow: function (evt) {
     var prevSlide = evt.detail.prevSlide;
     if (prevSlide) {
       var fadeInElements = $("#" + prevSlide.id + " .fade-out");
@@ -52,8 +67,8 @@ mosho.plugin({
 });
 
 mosho.plugin({
-  name:"manage-burger-ordering",
-  preShow:function (evt) {
+  name: "manage-burger-ordering",
+  preShow: function (evt) {
 
     function renderBurgers(burgers) {
       var ELEMENTS_PER_ROW = 3;
@@ -90,15 +105,15 @@ mosho.plugin({
     }
 
     function initBurgerControlSliders() {
-      $("#slider-Meat").slider({max:30, min:1, step:1});
+      $("#slider-Meat").slider({max: 30, min: 1, step: 1});
       $("#slider-Meat").bind("slidechange", function (event, ui) {
         $("#meat-value").text(ui.value);
       });
-      $("#slider-Vegetables").slider({max:30, min:1, step:1});
+      $("#slider-Vegetables").slider({max: 30, min: 1, step: 1});
       $("#slider-Vegetables").bind("slidechange", function (event, ui) {
         $("#vegetables-value").text(ui.value);
       });
-      $("#slider-BakedColor").slider({max:2, min:1, step:0.1});
+      $("#slider-BakedColor").slider({max: 2, min: 1, step: 0.1});
       $("#slider-BakedColor").bind("slidechange", function (event, ui) {
         $("#baked-color-value").text(ui.value);
       });
@@ -113,7 +128,7 @@ mosho.plugin({
     }
 
     function onSlideChange(burgers) {
-      return function(event, ui) {
+      return function (event, ui) {
         if (typeof event.originalEvent == 'undefined') {
           return;
         }
@@ -143,7 +158,7 @@ mosho.plugin({
       }
     }
   },
-  postShow:function (evt) {
+  postShow: function (evt) {
     var prevSlide = evt.detail.prevSlide;
     if (prevSlide) {
       var elements = $("#" + prevSlide.id + " .burger");
@@ -157,8 +172,8 @@ mosho.plugin({
 });
 
 mosho.plugin({
-  name:"Super_Duper_Burger_Sorting_Controls",
-  preShow:function (event) {
+  name: "Super_Duper_Burger_Sorting_Controls",
+  preShow: function (event) {
     var nextSlide = event.detail.nextSlide;
     if (nextSlide) {
       var hasShowBurgerControlsClass = $("#" + nextSlide.id + " .show-burger-controls");
@@ -167,7 +182,7 @@ mosho.plugin({
       }
     }
   },
-  postShow:function (evt) {
+  postShow: function (evt) {
     var prevSlide = evt.detail.prevSlide;
     if (prevSlide) {
       var hasShowBurgerControlsClass = $("#" + prevSlide.id + " .show-burger-controls");
