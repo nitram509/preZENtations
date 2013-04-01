@@ -11,16 +11,9 @@
   <link href="css/fonts.css" rel="stylesheet" type="text/css">
   <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
   <link href="css/prettify.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/bootstrap.icon-large.css" type="text/css">
 
   <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="js/jquery-ui-1.8.23.min.js" type="text/javascript"></script>
-
-  <style type="text/css">
-    span[lang=en], cite[lang=en] {
-      display: none;
-    }
-  </style>
 
 </head>
 <body>
@@ -50,6 +43,12 @@
       nitram509
     </a>
   </small>
+
+  <div class="fade-in fade-out">
+    <button onclick="switchLanguage('de')" class="language-selector btn-lang-de">de</button>
+    <button onclick="switchLanguage('en')" class="language-selector btn-lang-en">en</button>
+  </div>
+
 </div>
 
 <!--  ******************************************************************************  -->
@@ -580,5 +579,9 @@ sim(q,t) = -----------------------------------------
 <script src="js/mkirst-vector-space-classification.js" type="text/javascript"></script>
 <script>
   prettyPrint();
+</script>
+<script type="text/javascript">
+  var language = window.navigator.userLanguage || window.navigator.language;
+  switchLanguage(language);
 </script>
 </html>
