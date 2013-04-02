@@ -527,7 +527,8 @@ strong, b {
   border-bottom-right-radius: 4px /*{cornerRadius}*/;
 }
 
-#title .profile-links a {
+#title .profile-links a,
+a.profile-links {
   background: none !important;
 }
 

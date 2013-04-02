@@ -23,7 +23,7 @@
 <div class="mosho-slide" id="title"
      data-x="-1200" data-y="-1200"
      data-scale=1
-     data-prev="final-words">
+     data-prev="links">
   <h2>
     <span lang="de">Domänen-Objekte sortieren mit</span>
     <span lang="en">Sorting Domain Objects via</span>
@@ -31,7 +31,7 @@
 
   <h2>Vector Space Classification</h2>
 
-  <p>Martin W. Kirst</p>
+  <p>Martin W. Kirst, <a class="profile-links" href="http://www.hypoport.de">Hypoport AG</a></p>
   <small class="profile-links">
     <a href="https://twitter.com/nitram509">
       <img src="images/glyphicons_411_twitter.png" width="24" height="24">
@@ -52,6 +52,7 @@
 </div>
 
 <!--  ******************************************************************************  -->
+<!--
 <div class="mosho-slide" id="intro-question"
      data-x=1400>
   <h2>
@@ -64,8 +65,10 @@
     <span lang="en">maybe ...</span>
   </h3>
 </div>
+-->
 
 <!--  ******************************************************************************  -->
+<!--
 <div class="mosho-slide" id="burger"
      data-x=2800>
   <h2>Arrays.sort() ?</h2>
@@ -101,6 +104,7 @@
     </small>
   </p>
 </div>
+-->
 
 
 <!--  ******************************************************************************  -->
@@ -271,7 +275,7 @@
   </h3>
   <ul>
     <li><span lang="de">Addition/Subtraktion</span><span lang="en">Addition/Subtraction</span></li>
-    <li><span lang="de">Skalarprodukt</span><span lang="en">Scalar multiplication</span> &#8793; <span lang="de">Winkel</span><span lang="en">angle</span></li>
+    <li><span lang="de">Skalarprodukt</span><span lang="en">Scalar multiplication</span><!-- &#8793; <span lang="de">Winkel</span><span lang="en">angle</span></li>-->
     <li><span lang="de">Kreuzprodukt</span><span lang="en">Dot product</span></li>
     <li><span lang="de">Länge/Betrag</span><span lang="en">Length</span></li>
     <li><strong><span lang="de">Einheitsvektor</span><span lang="en">Unit vector</span></strong></li>
@@ -314,7 +318,7 @@
     <span lang="en">For each attribute choose the best value</span>
     <span lang="de">Wähle den besten Wert pro Attribut</span>
   </p>
-  <table class="code">
+  <table class="code auto-hide">
     <thead>
     <tr>
       <td>
@@ -359,22 +363,8 @@
      data-x=8000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
-<pre class="code-math">
-                    ->   ->
-                    q  * t                       (dot product)
-sim(q,t) = ---------------------------
-             / || -> ||   || -> || \
-            |  || q  || * || t  ||  |      (euclidean lengths)
-             \                     /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )
-        </small>
-      </small>
-    </small>
+  <p class="code auto-hide">
+      <img src="images/math-formula-1.png" height="212" width="740" alt="sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )">
   </p>
 </div>
 
@@ -383,32 +373,8 @@ sim(q,t) = ---------------------------
      data-x=10000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
-<pre class="code-math">
-                            N
-                           ---
-                           \
-                            >   Q   * T
-                           /     ai    ai
-                           ---
-                          i = 1
-sim(q,t) = -----------------------------------------
-             /     ___________       ___________ \
-            |     |   N             |   N         |
-            |     |  ---            |  ---        |
-            |  _  |  \     2     _  |  \     2    |
-            |   \ |   >   Q    *  \ |   >   T     |
-            |    \|  /     ai      \|  /     ai   |
-            |     |  ---            |  ---        |
-             \    | i = 1           | i = 1      /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
-        </small>
-      </small>
-    </small>
+  <p class="code auto-hide">
+    <img src="images/math-formula-2.png" width="900" height="417" alt="sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )">
   </p>
 </div>
 
@@ -466,25 +432,26 @@ sim(q,t) = -----------------------------------------
 <div class="mosho-slide" id="thank-you"
      data-x=0 data-y=1200 data-rotx="90"
         >
-  <h1>
-    <span lang="de">Vielen Dank</span>
+  <h2>
+    <span lang="de">Einen habe ich noch ...</span>
     <span lang="en">Thank you</span>
-  </h1>
+  </h2>
 
   <p><br></p>
 
-  <p>
-    <a href="#burger-special">Burger Special</a>
-  </p>
+  <h3>
+    <span lang="de"><a href="#burger-special">Burger Spezial</a></span>
+    <span lang="en"><a href="#burger-special">Burger Special</a></span>
+  </h3>
 </div>
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="final-words"
+<div class="mosho-slide" id="links"
      data-x=0 data-y=2400
      data-next="title"
         >
-  <h2>Final words</h2>
+  <h2>Links</h2>
 
   <p>
     Eclipse Bug „Synchronization problem in mirror selection“<br/>
@@ -493,15 +460,21 @@ sim(q,t) = -----------------------------------------
   <p><!-- --><br/><!-- --></p>
 
   <p>
-    This presentation on github.com:<br/>
+    <span lang="de">Diese Präsentation auf github.com</span>
+    <span lang="en">This presentation on github.com</span>
+    <br/>
     <small>http://nitram509.github.com/preZENtations/vector-space-classification/index.html</small>
   </p>
   <p><!-- --><br/><!-- --></p>
 
   <p>
-    Third Party Licenses<br>
+    <span lang="de">Andere Lizenzen</span>
+    <span lang="en">Third Party Licenses</span>
+    <br>
     <small>
-      This presentation uses <a href="http://glyphicons.com/">GLYPHICONS</a>,
+      <span lang="de">Diese Präsentation verwendet</span>
+      <span lang="en">This presentation uses</span>
+      <a class="profile-links" href="http://glyphicons.com/">GLYPHICONS</a>,
       Creative Commons Attribution 3.0 Unported (CC BY 3.0)
     </small>
   </p>
@@ -516,7 +489,8 @@ sim(q,t) = -----------------------------------------
      data-next="thank-you"
      data-prev="thank-you"
         >
-  <h2 class="auto-hide">Burger Special</h2>
+  <span lang="de"><h2 class="auto-hide">Burger Spezial</h2></span>
+  <span lang="en"><h2 class="auto-hide">Burger Special</h2></span>
 
   <p class="burger-container show-burger-controls">
     <img class="auto-hide pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"
