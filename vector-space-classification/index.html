@@ -384,37 +384,10 @@
 <div class="mosho-slide" id="sample-code"
      data-x=12000 data-y=2400 data-rotx="90"
         >
-  <h3>Sample Code</h3>
-  <pre class="prettyprint white-code"><code class="language-java">
-    public class MirrorInfoComparator implements Comparator&lt;MirrorInfo&gt; {
+  <h3>Java: 30 LoC</h3>
 
-    final double refSpeed;
-    final double refFailures;
-    final double refDistance;
-    final double refEuclidLen;
+  <img class="code auto-hide" src="images/java-comperator.png" width="534" height="418" alt="screenshot java comperator implementation">
 
-    public MirrorInfoComparator(long speed, int failures, int distance) {
-    refSpeed = speed;
-    refFailures = failures;
-    refDistance = distance;
-    refEuclidLen = sqrt(refSpeed * refSpeed + refFailures * refFailures + refDistance*refDistance);
-    }
-
-    public int compare(MirrorInfo o1, MirrorInfo o2) {
-    if (o1 == o2) return 0;
-    // euclidean lengths
-    double o1_el = sqrt(o1.speed*o1.speed + o1.failures*o1.failures + o1.distance*o1.distance);
-    double o2_el = sqrt(o2.speed*o2.speed + o2.failures*o2.failures + o2.distance*o2.distance);
-    // vector dot products
-    double dp_1 = (refSpeed *o1.speed + refFailures *o1.failures + refDistance*o1.distance);
-    double dp_2 = (refSpeed *o2.speed + refFailures *o2.failures + refDistance*o2.distance);
-    // similarities from o1 to Reference and o2 to Reference
-    double similarity1 = dp_1 / (refEuclidLen * o1_el);
-    double similarity2 = dp_2 / (refEuclidLen * o2_el);
-    return Double.compare(similarity1, similarity2);
-    }
-    }
-  </code></pre>
 </div>
 
 
@@ -481,7 +454,7 @@
     </small>
   </p>
 
-  
+
 </div>
 
 
