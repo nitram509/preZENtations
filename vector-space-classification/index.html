@@ -23,7 +23,7 @@
 <div class="mosho-slide" id="title"
      data-x="-1200" data-y="-1200"
      data-scale=1
-     data-prev="final-words">
+     data-prev="links">
   <h2>
     <span lang="de">Domänen-Objekte sortieren mit</span>
     <span lang="en">Sorting Domain Objects via</span>
@@ -31,7 +31,7 @@
 
   <h2>Vector Space Classification</h2>
 
-  <p>Martin W. Kirst</p>
+  <p>Martin W. Kirst, <a class="profile-links" href="http://www.hypoport.de">Hypoport AG</a></p>
   <small class="profile-links">
     <a href="https://twitter.com/nitram509">
       <img src="images/glyphicons_411_twitter.png" width="24" height="24">
@@ -52,6 +52,7 @@
 </div>
 
 <!--  ******************************************************************************  -->
+<!--
 <div class="mosho-slide" id="intro-question"
      data-x=1400>
   <h2>
@@ -64,8 +65,10 @@
     <span lang="en">maybe ...</span>
   </h3>
 </div>
+-->
 
 <!--  ******************************************************************************  -->
+<!--
 <div class="mosho-slide" id="burger"
      data-x=2800>
   <h2>Arrays.sort() ?</h2>
@@ -101,6 +104,7 @@
     </small>
   </p>
 </div>
+-->
 
 
 <!--  ******************************************************************************  -->
@@ -164,10 +168,28 @@
   </table>
 </div>
 
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="approach"
+     data-x=1400 data-y=1200
+
+        >
+  <h3>
+    <span lang="de">Lösungsansatz</span>
+    <span lang="en">Approach</span>
+  </h3>
+
+  <p><b>
+    Vector Space Classification<br>
+    <span lang="de">mit</span>
+    <span lang="en">using</span><br>
+    <span lang="de">Training ähnlich Rocchio</span>
+    <span lang="en">Training similar to Rocchio</span>
+  </b></p>
+</div>
 
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="wikipedia-definition"
-     data-x=1400 data-y=1200
+     data-x=2800 data-y=1200
         >
   <h2>
     <span lang="de"><img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo" width="135" height="155"/></span>
@@ -197,7 +219,8 @@
 
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="usage"
-     data-x=2800 data-y=1200
+     data-x=4400 data-y=1200 data-z=1000
+
         >
   <h3>
     <span lang="de">Typische Verwendung</span>
@@ -220,23 +243,6 @@
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="approach"
-     data-x=4400 data-y=1200 data-z=1000>
-  <h3>
-    <span lang="de">Lösungsansatz</span>
-    <span lang="en">Approach</span>
-  </h3>
-
-  <p><b>
-    Vector Space Classification<br>
-    <span lang="de">mit</span>
-    <span lang="en">using</span><br>
-    <span lang="de">Training ähnlich Rocchio</span>
-    <span lang="en">Training similar to Rocchio</span>
-  </b></p>
-</div>
-
-<!--  ******************************************************************************  -->
 <div class="mosho-slide" id="vectors"
      data-x=1400 data-y=2400 data-z=2000
         >
@@ -246,11 +252,11 @@
   </h3>
 
   <p>
-    <img class="auto-hide white-background" src="images/MSP27551a32fd06e5c492e400006843aga8c534ahde.png"
+    <img class="auto-hide white-background" src="images/vector-definition.png"
          alt="vektoren"/>
   </p>
 
-  <p class="legend">
+  <p class="legend" style="display: none">
     <small>
       <small>
         <small>
@@ -271,7 +277,7 @@
   </h3>
   <ul>
     <li><span lang="de">Addition/Subtraktion</span><span lang="en">Addition/Subtraction</span></li>
-    <li><span lang="de">Skalarprodukt</span><span lang="en">Scalar multiplication</span> &#8793; <span lang="de">Winkel</span><span lang="en">angle</span></li>
+    <li><span lang="de">Skalarprodukt</span><span lang="en">Scalar multiplication</span><!-- &#8793; <span lang="de">Winkel</span><span lang="en">angle</span></li>-->
     <li><span lang="de">Kreuzprodukt</span><span lang="en">Dot product</span></li>
     <li><span lang="de">Länge/Betrag</span><span lang="en">Length</span></li>
     <li><strong><span lang="de">Einheitsvektor</span><span lang="en">Unit vector</span></strong></li>
@@ -289,19 +295,10 @@
   </h3>
 
   <p>
-    <img class="auto-hide" style="width: 55%; height: 55%; margin: 25px;" src="images/Rechte-hand-regel-ex.png"
-         alt="rechte Hand ... Erklärung am Beispiel von Vektoren im Raum">
+    <img class="auto-hide white-background" src="images/vector-definition-without_legend.png"
+         alt="vektoren"/>
   </p>
 
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          http://en.wikipedia.org/wiki/File:Rechte-hand-regel.jpg &nbsp; (CC BY-SA 3.0)
-        </small>
-      </small>
-    </small>
-  </p>
 </div>
 
 <!--  ******************************************************************************  -->
@@ -314,7 +311,7 @@
     <span lang="en">For each attribute choose the best value</span>
     <span lang="de">Wähle den besten Wert pro Attribut</span>
   </p>
-  <table class="code">
+  <table class="code auto-hide">
     <thead>
     <tr>
       <td>
@@ -359,22 +356,8 @@
      data-x=8000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
-<pre class="code-math">
-                    ->   ->
-                    q  * t                       (dot product)
-sim(q,t) = ---------------------------
-             / || -> ||   || -> || \
-            |  || q  || * || t  ||  |      (euclidean lengths)
-             \                     /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )
-        </small>
-      </small>
-    </small>
+  <p class="code auto-hide">
+      <img src="images/math-formula-1.png" height="212" width="740" alt="sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )">
   </p>
 </div>
 
@@ -383,32 +366,8 @@ sim(q,t) = ---------------------------
      data-x=10000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
-<pre class="code-math">
-                            N
-                           ---
-                           \
-                            >   Q   * T
-                           /     ai    ai
-                           ---
-                          i = 1
-sim(q,t) = -----------------------------------------
-             /     ___________       ___________ \
-            |     |   N             |   N         |
-            |     |  ---            |  ---        |
-            |  _  |  \     2     _  |  \     2    |
-            |   \ |   >   Q    *  \ |   >   T     |
-            |    \|  /     ai      \|  /     ai   |
-            |     |  ---            |  ---        |
-             \    | i = 1           | i = 1      /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
-        </small>
-      </small>
-    </small>
+  <p class="code auto-hide">
+    <img src="images/math-formula-2.png" width="900" height="417" alt="sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )">
   </p>
 </div>
 
@@ -416,37 +375,12 @@ sim(q,t) = -----------------------------------------
 <div class="mosho-slide" id="sample-code"
      data-x=12000 data-y=2400 data-rotx="90"
         >
-  <h3>Sample Code</h3>
-  <pre class="prettyprint white-code"><code class="language-java">
-    public class MirrorInfoComparator implements Comparator&lt;MirrorInfo&gt; {
+  <h3>Java: 30 LoC</h3>
 
-    final double refSpeed;
-    final double refFailures;
-    final double refDistance;
-    final double refEuclidLen;
+  <p>
+    <img class="code auto-hide" src="images/java-comperator.png" width="534" height="418" alt="screenshot java comperator implementation">
+  </p>
 
-    public MirrorInfoComparator(long speed, int failures, int distance) {
-    refSpeed = speed;
-    refFailures = failures;
-    refDistance = distance;
-    refEuclidLen = sqrt(refSpeed * refSpeed + refFailures * refFailures + refDistance*refDistance);
-    }
-
-    public int compare(MirrorInfo o1, MirrorInfo o2) {
-    if (o1 == o2) return 0;
-    // euclidean lengths
-    double o1_el = sqrt(o1.speed*o1.speed + o1.failures*o1.failures + o1.distance*o1.distance);
-    double o2_el = sqrt(o2.speed*o2.speed + o2.failures*o2.failures + o2.distance*o2.distance);
-    // vector dot products
-    double dp_1 = (refSpeed *o1.speed + refFailures *o1.failures + refDistance*o1.distance);
-    double dp_2 = (refSpeed *o2.speed + refFailures *o2.failures + refDistance*o2.distance);
-    // similarities from o1 to Reference and o2 to Reference
-    double similarity1 = dp_1 / (refEuclidLen * o1_el);
-    double similarity2 = dp_2 / (refEuclidLen * o2_el);
-    return Double.compare(similarity1, similarity2);
-    }
-    }
-  </code></pre>
 </div>
 
 
@@ -466,25 +400,26 @@ sim(q,t) = -----------------------------------------
 <div class="mosho-slide" id="thank-you"
      data-x=0 data-y=1200 data-rotx="90"
         >
-  <h1>
-    <span lang="de">Vielen Dank</span>
+  <h2>
+    <span lang="de">Einen habe ich noch ...</span>
     <span lang="en">Thank you</span>
-  </h1>
+  </h2>
 
   <p><br></p>
 
-  <p>
-    <a href="#burger-special">Burger Special</a>
-  </p>
+  <h3>
+    <span lang="de"><a href="#burger-special">Burger Spezial</a></span>
+    <span lang="en"><a href="#burger-special">Burger Special</a></span>
+  </h3>
 </div>
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="final-words"
+<div class="mosho-slide" id="links"
      data-x=0 data-y=2400
      data-next="title"
         >
-  <h2>Final words</h2>
+  <h2>Links</h2>
 
   <p>
     Eclipse Bug „Synchronization problem in mirror selection“<br/>
@@ -493,20 +428,26 @@ sim(q,t) = -----------------------------------------
   <p><!-- --><br/><!-- --></p>
 
   <p>
-    This presentation on github.com:<br/>
+    <span lang="de">Diese Präsentation auf github.com</span>
+    <span lang="en">This presentation on github.com</span>
+    <br/>
     <small>http://nitram509.github.com/preZENtations/vector-space-classification/index.html</small>
   </p>
   <p><!-- --><br/><!-- --></p>
 
   <p>
-    Third Party Licenses<br>
+    <span lang="de">Andere Lizenzen</span>
+    <span lang="en">Third Party Licenses</span>
+    <br>
     <small>
-      This presentation uses <a href="http://glyphicons.com/">GLYPHICONS</a>,
+      <span lang="de">Diese Präsentation verwendet</span>
+      <span lang="en">This presentation uses</span>
+      <a class="profile-links" href="http://glyphicons.com/">GLYPHICONS</a>,
       Creative Commons Attribution 3.0 Unported (CC BY 3.0)
     </small>
   </p>
 
-  
+
 </div>
 
 
@@ -516,27 +457,28 @@ sim(q,t) = -----------------------------------------
      data-next="thank-you"
      data-prev="thank-you"
         >
-  <h2 class="auto-hide">Burger Special</h2>
+  <span lang="de"><h2 class="auto-hide">Burger Spezial</h2></span>
+  <span lang="en"><h2 class="auto-hide">Burger Special</h2></span>
 
   <p class="burger-container show-burger-controls">
     <img class="auto-hide pos1 animated burger" src="images/burger-3ae75cb9fc298db3c687e941e1faf530.png"
          height="183" data-burger="meat=10, vegetables=5, bakedcolor=1.2"
-         title="meat=10, vegetables=5, bakedcolor=1.2"/>
+         title="Fleisch=10, Gemüse=5, Farbe=1.2"/>
     <img class="auto-hide pos2 animated burger" src="images/burger-33b0a5e6afec0808d2270e434db6168f.png"
          height="189" data-burger="meat=15, vegetables=5, bakedcolor=1.5"
-         title="meat=15, vegetables=5, bakedcolor=1.3"/>
+         title="Fleisch=15, Gemüse=5, Farbe=1.3"/>
     <img class="auto-hide pos3 animated burger" src="images/burger-76be32f6f3417e27117af6a13cd089e6.png"
          height="226" data-burger="meat=10, vegetables=15, bakedcolor=1.1"
-         title="meat=10, vegetables=15, bakedcolor=1.1"/>
+         title="Fleisch=10, Gemüse=15, Farbe=1.1"/>
     <img class="auto-hide pos4 animated burger" src="images/burger-65aebe4eaa4d2a5be04dbc3301c21016.png"
          height="269" data-burger="meat=15, vegetables=20, bakedcolor=1.5"
-         title="meat=15, vegetables=20, bakedcolor=1.4"/>
+         title="Fleisch=15, Gemüse=20, Farbe=1.4"/>
     <img class="auto-hide pos5 animated burger" src="images/burger-a70eddc4277766515035e7e17297a57a.png"
          height="175" data-burger="meat=10, vegetables=10, bakedcolor=1.2"
-         title="meat=10, vegetables=10, bakedcolor=1.2"/>
+         title="Fleisch=10, Gemüse=10, Farbe=1.2"/>
     <img class="auto-hide pos6 animated burger" src="images/burger-43a9c8d1a05df475a7a755efbe05508b.png"
          height="171" data-burger="meat=10, vegetables=10, bakedcolor=1.6"
-         title="meat=10, vegetables=10, bakedcolor=1.6"/>
+         title="Fleisch=10, Gemüse=10, Farbe=1.6"/>
   </p>
 
   <p class="auto-hide legend">
@@ -555,17 +497,17 @@ sim(q,t) = -----------------------------------------
 <div id="burger-sort-controls" class="slider-menu ui-corner-tr ui-corner-br" style="display: none">
   <ul>
     <li>
-      Meat: <span id="meat-value"></span>
+      <span lang="de">Fleisch</span><span lang="en">Meat</span>: <span id="meat-value"></span>
 
       <div id="slider-Meat" class="mysliders"></div>
     </li>
     <li>
-      Vegetables: <span id="vegetables-value"></span>
+      <span lang="de">Gemüse</span><span lang="en">Vegetables</span>: <span id="vegetables-value"></span>
 
       <div id="slider-Vegetables" class="mysliders"></div>
     </li>
     <li>
-      Baked color: <span id="baked-color-value"></span>
+      <span lang="de">Farbe</span><span lang="en">Baked color</span>: <span id="baked-color-value"></span>
 
       <div id="slider-BakedColor" class="mysliders"></div>
     </li>
