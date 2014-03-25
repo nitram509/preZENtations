@@ -1,0 +1,16 @@
+img.thatsme {
+  width: 200px;
+}
+
+img.thatsme.rotated {
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  transform: rotate(-20deg);
+}
+
+img.thatsme.rotated:hover {
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+

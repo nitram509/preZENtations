@@ -1,26 +1,17 @@
 <!doctype html>
 <html lang="de">
-
 	<head>
 		<meta charset="utf-8">
-
 		<title>Animationszauber - Geringer Aufwand, maximale Wirkung</title>
-
 		<meta name="description" content="Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen. Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken. Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“, lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern. Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster. Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht. Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.">
 		<meta name="author" content="Martin W. Kirst">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-
-		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <link rel="stylesheet" href="css/my.css">
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
@@ -30,7 +21,6 @@
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
-
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -46,9 +36,52 @@
 					<h1>Animationszauber</h1>
 					<h3>Geringer Aufwand, maximale Wirkung</h3>
 					<p>
-						<small>Created by <a href="https://github.com/nitram509">Martin W. Kirst</a> / <a href="http://twitter.com/nitram509">@nitram509</a></small>
+						<small>&copy; 03/2014 <a href="https://github.com/nitram509">Martin W. Kirst</a> / <a href="http://twitter.com/nitram509">@nitram509</a></small>
 					</p>
 				</section>
+
+        <section>
+          <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
+          <div>
+            Github
+            Twitter
+          </div>
+
+        </section>
+
+        <section>
+
+          <h2>Agenda</h2>
+          <ul>
+            <li>Grundlagen Animation</li>
+            <li>Wirkung</li>
+            <li>Prinzipien</li>
+            <li>CSS Animationen</li>
+            <li>Javascript Animationen</li>
+            <li>Teens / Tweening</li>
+            <li>Links / Quellen</li>
+          </ul>
+
+          <aside class="notes">
+            Einleitung
+
+            Worum gehts:
+            Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen.
+            Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken.
+            Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“,
+            lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern.
+            Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster.
+            Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht.
+
+            Nutzen:
+            Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.
+
+            Ziel:
+            Anregungen, und den "Ach so einfach ist das Effekt" ;-)
+
+          </aside>
+
+        </section>
 
 			</div>
 
@@ -58,23 +91,13 @@
 		<script src="js/reveal.min.js"></script>
 
 		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
-
-				theme: 'moon', // available themes are in /css/theme
-				transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-//				parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-//				parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
+				theme: 'moon',
+				transition: 'fade',
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
@@ -84,7 +107,6 @@
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-
 		</script>
 
 	</body>
