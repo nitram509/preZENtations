@@ -14,7 +14,7 @@ img.thatsme.rotated:hover {
   transform: rotate(20deg);
 }
 
-#rocket {
+#rocket-1 {
   position: absolute;
   border: none;
   background: none;
@@ -24,13 +24,48 @@ img.thatsme.rotated:hover {
   transition: bottom 4s, left 4s, ease-out;
 }
 
-#rocket.start {
+#rocket-1.start {
   bottom: 11px;
   left: -13px;
 }
 
-#rocket.end {
+#rocket-1.end {
   bottom: 300px;
   left: 385px;
 }
 
+/* ********************************** */
+
+@-webkit-keyframes up-and-down {
+  0%   {bottom:11px;  }
+  50%  {bottom:145px; }
+  100% {bottom:11px;  }
+}
+
+@keyframes up-and-down {
+  0%   {bottom:11px;  }
+  50%  {bottom:145px; }
+  100% {bottom:11px;  }
+}
+
+#rocket-2 {
+  position: absolute;
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  -webkit-transition: left 4s, ease-out;
+  transition: left 4s, ease-out;
+}
+
+#rocket-2.start {
+  bottom: 11px;
+  left: -13px;
+}
+
+#rocket-2.end {
+  -webkit-animation: up-and-down 4s;
+  animation: up-and-down 4s;
+
+  left: 385px;
+}

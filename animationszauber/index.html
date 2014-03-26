@@ -176,34 +176,33 @@
 
 <section>
 
-  <h2>CSS 3 Animation</h2>
+  <h2>CSS 3 Animation - Einfach</h2>
 
 
   <div>
     <div style="width: 500px; height: 370px; background-color: silver; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="rocket" class="start" src="img/rocket-128x127.png" alt="rocket"/>
+      <img id="rocket-1" class="start" src="img/rocket-128x127.png" alt="rocket"/>
     </div>
 <pre style="width:400px;margin-left: 510px;"><code data-trim>
 #rocket {
   transition:
-    bottom 4s, left 4s, ease-out;
+    bottom 4s ease-out,
+    left 4s ease-out;
 }
-
 #rocket.start {
   bottom: 11px;
   left: -13px;
 }
-
 #rocket.end {
   bottom: 300px;
   left: 385px;
 }
 </code></pre>
-    <button id="lift-off" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; left:130px; top:-22px">Lift-off ...</button>
+    <button id="lift-off-1" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; left:130px; top:-22px">Lift-off ...</button>
     <script type="text/javascript">
-      $("#lift-off").click(function(e){
-        var rocket = $('#rocket');
-        var button = $('#lift-off');
+      $("#lift-off-1").click(function(e){
+        var rocket = $('#rocket-1');
+        var button = $('#lift-off-1');
         if (rocket.hasClass("end")) {
           rocket.removeClass("end");
           button.text("Lift-off ...");
@@ -219,9 +218,44 @@
 
 <section>
 
-  <h2>CSS 3 Animation</h2>
+  <h2>CSS 3 Animation - Komplex</h2>
 
-  Beispiel 2: complex, flying Rocket "um die Ecke"
+  <div>
+    <div style="width: 500px; height: 370px; background-color: silver; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="rocket-2" class="start" src="img/rocket-128x127.png" alt="rocket"/>
+    </div>
+<pre style="width:400px;margin-left: 510px;"><code data-trim>
+@keyframes up-and-down {
+  0%   {bottom: 11px; }
+  50%  {bottom: 145px;}
+  100% {bottom: 11px; }
+}
+#rocket {
+  transition: left 4s, ease-out;
+}
+#rocket.start {
+  /* ... */
+}
+#rocket.end {
+  animation: up-and-down 4s;
+  left: 385px;
+}
+</code></pre>
+    <button id="lift-off-2" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; margin-left:750px; top:-22px">Lift-off ...</button>
+    <script type="text/javascript">
+      $("#lift-off-2").click(function(e){
+        var rocket = $('#rocket-2');
+        var button = $('#lift-off-2');
+        if (rocket.hasClass("end")) {
+          rocket.removeClass("end");
+          button.text("Lift-off ...");
+        } else {
+          rocket.addClass("end");
+          button.text("Landing ...");
+        }
+      })
+    </script>
+  </div>
 
 </section>
 
