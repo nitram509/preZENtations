@@ -25,205 +25,239 @@
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
   <![endif]-->
+  <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 </head>
 
 <body>
 
 <div class="reveal">
 
-  <!-- Any section element inside of this container is displayed as a slide -->
-  <div class="slides">
-    <section>
-      <h1>Animationszauber</h1>
-
-      <h3>Geringer Aufwand, maximale Wirkung</h3>
-
-      <p>
-        <small>&copy; 03/2014 <a href="https://github.com/nitram509">Martin W. Kirst</a> / <a href="http://twitter.com/nitram509">@nitram509</a>
-        </small>
-      </p>
-    </section>
-
-    <section>
-      <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
-      <br><br>
-
-      <div>
-        <small>
-          <a href="https://twitter.com/nitram509">Twitter</a>
-          &sdot;
-          <a href="https://github.com/nitram509">Github</a>
-          &sdot;
-          <a href="https://sourceforge.net/u/userid-1140154">SourceForge</a>
-        </small>
-        <br>
-        <del>UX-Experte</del>
-        <br>
-        Von ASM bis Zope<br>
-        &hearts; HTML + CSS + JS &hearts;<br>
-      </div>
-
-    </section>
-
-    <section>
-
-      <h2>Agenda</h2>
-      <ul>
-        <li>Grundlagen Animation</li>
-        <li>Wirkung</li>
-        <li>Prinzipien</li>
-        <li>CSS Animationen</li>
-        <li>Javascript Animationen</li>
-        <li>Tweens / Tweening</li>
-      </ul>
-
-      <aside class="notes">
-        Einleitung
-
-        Worum gehts:
-        Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen.
-        Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken.
-        Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“,
-        lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern.
-        Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster.
-        Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht.
-
-        Nutzen:
-        Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.
-
-        Ziel:
-        Überblick, Anregungen, und den "Ach so einfach ist das Effekt" ;-)
-
-      </aside>
-
-    </section>
-
-    <section>
-
-      <h2>Wirkung</h2>
-
-      <p>Erzeugt Emotion/Gefühl</p>
-
-      <p>Gibt Feedback</p>
-
-      <p>Lenkt Aufmerksamkeit</p>
-
-      <aside class="notes">
-        Repräsentationssysteme:
-        Kinästhetische Typen, weil Emotion und Gefühl
-        Visuelle Lerntypen
-      </aside>
-
-    </section>
-
-    <section>
-
-      <h2>Prinzip</h2>
-
-      <strong>Konsistenz > Vielfahlt</strong>
-
-    </section>
-
-    <section>
-      <h2>Was?</h2>
-
-      <p>Position</p>
-
-      <p>Rotation</p>
-
-      <p>Skalierung</p>
-
-      <p>Transformation</p>
-    </section>
-
-    <section>
-      <h2>Wie?</h2>
-
-      <p>Laufzeit (duration)</p>
-
-      <p>Verzögerung (delay)</p>
-
-      <p>Veränderungskurve (easing)</p>
-    </section>
-
-    <section>
-
-      <h2>Easing</h2>
-
-      <p>Hands on...</p>
-
-    </section>
-
-    <section>
-
-      <h2>Easing</h2>
-
-      <p>
-        <img src="img/easing-default.png" alt="default" title="default"/>
-        <img src="img/easing-ease-in.png" alt="ease-in" title="ease-in"/>
-        <img src="img/easing-ease-out.png" alt="ease-out" title="ease-out"/>
-        <img src="img/easing-ease-in-out.png" alt="ease-in-out" title="ease-in-out"/>
-        <img src="img/easing-cubic-bezier.png" alt="cubic-bezier" title="cubic-bezier"/>
-      </p>
-
-      <p>
-        <small>&laquo; Weitere ... http://easings.net &raquo;</small>
-      </p>
-
-    </section>
-
-
-    <section>
-
-      <h2>CSS 3 Animation</h2>
-
-      Vorteil: Funktioniert auf modernen Browsern und ist quasi rückwärts kompatibel
-
-      Beispiel 1: simple flying Rocket
-
-    </section>
-
-    <section>
-
-      <h2>CSS 3 Animation</h2>
-
-      Beispiel 2: complex, flying Rocket "um die Ecke"
-
-    </section>
-
-    <section>
-
-      <h2>CSS 3 Animation</h2>
-
-      Beispiel 3: Trello, Menübar
-
-    </section>
-
-    <section>
-
-      <h2>CSS 3 Animation</h2>
-
-      Beispiel 4: Hakim, Rolling Links
-
-    </section>
-
-    <section>
-      Krass:
-      Cube ???
-      http://anthonycalzadilla.com/css3-ATAT/index.html
-      http://codepen.io/Sonick/pen/vijJl
-      http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/index1.html
-    </section>
-
-    <section>
-      <h2>CSS Limits</h2>
-
-      - keine Interaktion (außer Buttons mißbrauchen, http://codepen.io/Angelata/pen/cihEG)
-      - Prozentuale Zeitangaben (keyframes) -> schlecht für reuse und Änderungen
-      - sequenzing, rotation und scale liegen beide auf transformation und können so nicht unabhängig verwendet werden
-    </section>
-
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+  <h1>Animationszauber</h1>
+
+  <h3>Geringer Aufwand, maximale Wirkung</h3>
+
+  <p>
+    <small>&copy; 03/2014 <a href="https://github.com/nitram509">Martin W. Kirst</a> / <a href="http://twitter.com/nitram509">@nitram509</a>
+    </small>
+  </p>
+</section>
+
+<section>
+  <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
+  <br><br>
+
+  <div>
+    <small>
+      <a href="https://twitter.com/nitram509">Twitter</a>
+      &sdot;
+      <a href="https://github.com/nitram509">Github</a>
+      &sdot;
+      <a href="https://sourceforge.net/u/userid-1140154">SourceForge</a>
+    </small>
+    <br>
+    <del>UX-Experte</del>
+    <br>
+    Von ASM bis Zope<br>
+    &hearts; HTML + CSS + JS &hearts;<br>
   </div>
+
+</section>
+
+<section>
+
+  <h2>Agenda</h2>
+  <ul>
+    <li>Grundlagen Animation</li>
+    <li>Wirkung</li>
+    <li>Prinzipien</li>
+    <li>CSS Animationen</li>
+    <li>Javascript Animationen</li>
+    <li>Tweens / Tweening</li>
+  </ul>
+
+  <aside class="notes">
+    Einleitung
+
+    Worum gehts:
+    Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen.
+    Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken.
+    Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“,
+    lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern.
+    Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster.
+    Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht.
+
+    Nutzen:
+    Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.
+
+    Ziel:
+    Überblick, Anregungen, und den "Ach so einfach ist das Effekt" ;-)
+
+  </aside>
+
+</section>
+
+<section>
+
+  <h2>Wirkung</h2>
+
+  <p>Erzeugt Emotion/Gefühl</p>
+
+  <p>Gibt Feedback</p>
+
+  <p>Lenkt Aufmerksamkeit</p>
+
+  <aside class="notes">
+    Repräsentationssysteme:
+    Kinästhetische Typen, weil Emotion und Gefühl
+    Visuelle Lerntypen
+  </aside>
+
+</section>
+
+<section>
+
+  <h2>Prinzip</h2>
+
+  <strong>Konsistenz > Vielfahlt</strong>
+
+</section>
+
+<section>
+  <h2>Was?</h2>
+
+  <p>Position</p>
+
+  <p>Rotation</p>
+
+  <p>Skalierung</p>
+
+  <p>Transformation</p>
+</section>
+
+<section>
+  <h2>Wie?</h2>
+
+  <p>Laufzeit (duration)</p>
+
+  <p>Verzögerung (delay)</p>
+
+  <p>Veränderungskurve (easing)</p>
+</section>
+
+<section>
+
+  <h2>Easing</h2>
+
+  <p>Hands on...</p>
+
+</section>
+
+<section>
+
+  <h2>Easing</h2>
+
+  <p>
+    <img src="img/easing-default.png" alt="default" title="default"/>
+    <img src="img/easing-ease-in.png" alt="ease-in" title="ease-in"/>
+    <img src="img/easing-ease-out.png" alt="ease-out" title="ease-out"/>
+    <img src="img/easing-ease-in-out.png" alt="ease-in-out" title="ease-in-out"/>
+    <img src="img/easing-cubic-bezier.png" alt="cubic-bezier" title="cubic-bezier"/>
+  </p>
+
+  <p>
+    <small>&laquo; Weitere ... http://easings.net &raquo;</small>
+  </p>
+
+</section>
+
+
+<section>
+
+  <h2>CSS 3 Animation</h2>
+
+
+  <div>
+    <div style="width: 500px; height: 370px; background-color: silver; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="rocket" class="start" src="img/rocket-128x127.png" alt="rocket"/>
+    </div>
+<pre style="width:400px;margin-left: 510px;"><code data-trim>
+#rocket {
+  transition:
+    bottom 4s, left 4s, ease-out;
+}
+
+#rocket.start {
+  bottom: 11px;
+  left: -13px;
+}
+
+#rocket.end {
+  bottom: 300px;
+  left: 385px;
+}
+</code></pre>
+    <button id="lift-off" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; left:130px; top:-22px">Lift-off ...</button>
+    <script type="text/javascript">
+      $("#lift-off").click(function(e){
+        var rocket = $('#rocket');
+        var button = $('#lift-off');
+        if (rocket.hasClass("end")) {
+          rocket.removeClass("end");
+          button.text("Lift-off ...");
+        } else {
+          rocket.addClass("end");
+          button.text("Landing ...");
+        }
+      })
+    </script>
+  </div>
+
+</section>
+
+<section>
+
+  <h2>CSS 3 Animation</h2>
+
+  Beispiel 2: complex, flying Rocket "um die Ecke"
+
+</section>
+
+<section>
+
+  <h2>CSS 3 Animation</h2>
+
+  Beispiel 3: Trello, Menübar
+
+</section>
+
+<section>
+
+  <h2>CSS 3 Animation</h2>
+
+  Beispiel 4: Hakim, Rolling Links
+
+</section>
+
+<section>
+  Krass:
+  Cube ???
+  http://anthonycalzadilla.com/css3-ATAT/index.html
+  http://codepen.io/Sonick/pen/vijJl
+  http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/index1.html
+</section>
+
+<section>
+  <h2>CSS Limits</h2>
+
+  - keine Interaktion (außer Buttons mißbrauchen, http://codepen.io/Angelata/pen/cihEG)
+  - Prozentuale Zeitangaben (keyframes) -> schlecht für reuse und Änderungen
+  - sequenzing, rotation und scale liegen beide auf transformation und können so nicht unabhängig verwendet werden
+</section>
+
+</div>
 
 </div>
 

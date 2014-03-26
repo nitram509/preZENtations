@@ -14,3 +14,23 @@ img.thatsme.rotated:hover {
   transform: rotate(20deg);
 }
 
+#rocket {
+  position: absolute;
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  -webkit-transition: bottom 4s, left 4s, ease-out;
+  transition: bottom 4s, left 4s, ease-out;
+}
+
+#rocket.start {
+  bottom: 11px;
+  left: -13px;
+}
+
+#rocket.end {
+  bottom: 300px;
+  left: 385px;
+}
+
