@@ -280,6 +280,48 @@
     </small></small>
   </p>
 
+</section>
+
+<section>
+
+  <h2>CSS Bilder</h2>
+
+  <div>
+    <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="bedcon-anim" class="box" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
+    </div>
+<pre style="width:600px;margin-left: 310px;"><code data-trim>
+.box {
+  transition:
+    all 500ms
+    cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transform:  translateY(0) scale(0.95, 0.95);
+}
+.box.active {
+  box-shadow: 0 11px 18px rgba(0,0,0,0.2);
+  transform:  translateY(-20px) scale(1, 1);
+}
+</code></pre>
+
+    <p>
+      <small><small>
+        <a href="http://aerotwist.com/tutorials/protip-nobody-expects-3d/">http://aerotwist.com/tutorials/protip-nobody-expects-3d/</a>
+      </small></small>
+    </p>
+
+    <button id="btn-bedcon-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; ">Animate</button>
+    <script type="text/javascript">
+      $("#btn-bedcon-anim").click(function(e){
+        var bedcon = $('#bedcon-anim');
+        if (bedcon.hasClass("active")) {
+          bedcon.removeClass("active");
+        } else {
+          bedcon.addClass("active");
+        }
+      })
+    </script>
+  </div>
 
 </section>
 
@@ -302,11 +344,46 @@
 </section>
 
 <section>
+
   <h2>Nachteile CSS-Animation</h2>
 
   <p>Keine Interaktion</p>
   <p>Prozentuale Zeitangaben (keyframes)</p>
   <p>Überlagerung 'transition'</p>
+
+</section>
+
+<section>
+
+  <h2>JS - jQuery Basics</h2>
+
+  <p>show / hide</p>
+  <p>fadeIn / fadeOut</p>
+  <p>slideUp / slideDown</p>
+  <p>animate (custom properties)</p>
+
+</section>
+
+<section>
+
+  <h2>JS - jQuery Beispiel</h2>
+
+  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
+  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
+  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
+
+  <p>
+    <button id="btn-fade">fadeIn/fadeOut</button>
+    &nbsp;&nbsp;&nbsp;
+    <button id="btn-animate">animate</button>
+    &nbsp;&nbsp;&nbsp;
+    <button id="btn-animate-twice">animate + animate</button>
+    <script type="text/javascript">
+
+    </script>
+  </p>
+
+
 </section>
 
 </div>
