@@ -1,6 +1,8 @@
 #rocket-1,
 #rocket-2,
-#bedcon-anim {
+#bedcon-anim,
+#bedcon-tween,
+#we-need-you {
   border: none;
   background: none;
   box-shadow: none;
@@ -55,9 +57,6 @@ img.thatsme.rotated:hover {
 
 #rocket-2 {
   position: absolute;
-  border: none;
-  background: none;
-  box-shadow: none;
 
   -webkit-transition: left 4s, ease-out;
   transition: left 4s, ease-out;
@@ -87,6 +86,39 @@ img.thatsme.rotated:hover {
   transform:  translateY(0) scale(0.95, 0.95);
 }
 #bedcon-anim.box.active {
+  box-shadow: 0 11px 18px rgba(0,0,0,0.2);
+  -webkit-transform:  translateY(-20px) scale(1, 1);
+  transform:  translateY(-20px) scale(1, 1);
+}
+
+/* ********************************* */
+
+#bedcon-tween {
+
+  position: absolute;
+  height: 100px;
+
+}
+
+#bedcon-tween.start {
+
+  bottom: 310px;
+  left: 60px;
+
+}
+
+/* ********************************** */
+
+#we-need-you.box {
+  border-radius: 3px;
+
+  -webkit-transition: all 400ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: all 400ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  -webkit-transform:  translateY(0) scale(0.95, 0.95);
+  transform:  translateY(0) scale(0.95, 0.95);
+}
+#we-need-you.box.active {
   box-shadow: 0 11px 18px rgba(0,0,0,0.2);
   -webkit-transform:  translateY(-20px) scale(1, 1);
   transform:  translateY(-20px) scale(1, 1);
