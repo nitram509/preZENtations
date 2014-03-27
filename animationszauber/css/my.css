@@ -2,7 +2,8 @@
 #rocket-2,
 #bedcon-anim,
 #bedcon-tween,
-#we-need-you {
+#we-need-you,
+#bedcon-anim-anim {
   border: none;
   background: none;
   box-shadow: none;
@@ -122,4 +123,14 @@ img.thatsme.rotated:hover {
   box-shadow: 0 11px 18px rgba(0,0,0,0.2);
   -webkit-transform:  translateY(-20px) scale(1, 1);
   transform:  translateY(-20px) scale(1, 1);
+}
+
+/* ************************************* */
+
+#bedcon-anim-anim {
+  -webkit-transition: none;
+  transition: none;
+
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
 }

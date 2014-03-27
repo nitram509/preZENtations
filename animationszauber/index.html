@@ -182,7 +182,7 @@
 
 
   <div>
-    <div style="width: 500px; height: 370px; background-color: silver; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+    <div style="width: 500px; height: 370px; background-color: whitesmoke; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
       <img id="rocket-1" class="start" src="img/rocket-128x127.png" alt="rocket"/>
     </div>
 <pre style="width:400px;margin-left: 510px;"><code data-trim>
@@ -223,7 +223,7 @@
   <h2>CSS Animation - Komplex</h2>
 
   <div>
-    <div style="width: 500px; height: 370px; background-color: silver; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+    <div style="width: 500px; height: 370px; background-color: whitesmoke; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
       <img id="rocket-2" class="start" src="img/rocket-128x127.png" alt="rocket"/>
     </div>
 <pre style="width:400px;margin-left: 510px;"><code data-trim>
@@ -274,7 +274,7 @@
   <h2>CSS Formular-Fokus</h2>
 
   <div>
-    <img src="img/bootstrap-form-example.png" alt="trello-menu"/>
+    <img src="img/bootstrap-fokus-anim.gif" alt="bootstrap-fokus-anim"/>
   </div>
   <p>
     <small><small>
@@ -373,20 +373,48 @@
 
   <h2>JS - jQuery Beispiel</h2>
 
-  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
-  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
-  <img src="img/bed-con-2014-orange.png" alt="bedcon"/>
+  <div>
+    <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
+    </div>
+<pre style="width:600px;margin-left: 310px;"><code data-trim>
+var logo = $('#bedcon-logo');
+logo.animate({color: 255}, {
+  duration: 4000,
+  easing: 'swing',
+  step: function (now, tween) {
+    var color = 255 - (now | 0);
+    this.style.backgroundColor =
+          'rgb('+color+','+color+','+color+')'
+  },
+  complete: function() {
+    // 2 Sekunden setTimeout()
+    logo[0].style.backgroundColor = '#fff'
+  }
+});
+</code></pre>
 
-  <p>
-    <button id="btn-fade">fadeIn/fadeOut</button>
-    &nbsp;&nbsp;&nbsp;
-    <button id="btn-animate">animate</button>
-    &nbsp;&nbsp;&nbsp;
-    <button id="btn-animate-twice">animate + animate</button>
+    <button id="btn-bedcon-anim-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position: relative;top: -20px;">Animate</button>
     <script type="text/javascript">
-
+      var bedcon = $('#bedcon-anim-anim')[0];
+      $('#btn-bedcon-anim-anim').click(function(e){
+        var properties = {color: 255};
+        $('#bedcon-anim-anim').animate(properties, {
+          duration: 4000,
+          easing: 'swing',
+          step: function (now, tween) {
+            var color = 255 - (now | 0);
+            this.style.backgroundColor = 'rgb('+color+','+color+','+color+')'
+          },
+          complete: function() {
+            setTimeout(function () {
+              bedcon.style.backgroundColor = '#fff'
+            }, 2000);
+          }
+        });
+      })
     </script>
-  </p>
+  </div>
 
 </section>
 
@@ -411,24 +439,24 @@
       <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
-var bedcon = document.getElementById("bedcon-tween");
+var logo = document.getElementById("bedcon-tween");
 var tween1 = new TWEEN.Tween( { x: 10 } )
             .to( { x: 190 } )
             .easing( TWEEN.Easing.Elastic.InOut )
             .onUpdate( function () {
-              bedcon.style.left = this.x + 'px';
+              logo.style.left = this.x + 'px';
             } );
 var tween2 = new TWEEN.Tween( { y: 270 } )
             .to( { y: 10 } )
             .easing( TWEEN.Easing.Quartic.InOut )
             .onUpdate( function () {
-              bedcon.style.bottom = this.y + 'px';
+              logo.style.bottom = this.y + 'px';
             } );
 tween1.chain(tween2);
 tween1.start();
 </code></pre>
 
-    <button id="btn-bedcon-tween" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; ">Animate</button>
+    <button id="btn-bedcon-tween" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position: relative; top:-20px">Animate</button>
     <script type="text/javascript">
       $("#btn-bedcon-tween").click(function(e){
         var bedcon = $('#bedcon-tween');
