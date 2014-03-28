@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <title>Sorting Domain Objects via Vector Space Classification - Martin W. Kirst</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,21 +15,15 @@
   <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="js/jquery-ui-1.8.23.min.js" type="text/javascript"></script>
 
-  <style type="text/css">
-    span[lang=de], cite[lang=de] {
-      display: none;
-    }
-  </style>
-
 </head>
 <body>
 <div id="mosho">
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="titel"
+<div class="mosho-slide" id="title"
      data-x="-1200" data-y="-1200"
      data-scale=1
-     data-prev="links">
+     data-prev="final-words">
   <h2>
     <span lang="de">Domänen-Objekte sortieren mit</span>
     <span lang="en">Sorting Domain Objects via</span>
@@ -38,7 +32,23 @@
   <h2>Vector Space Classification</h2>
 
   <p>Martin W. Kirst</p>
-  <small>&copy; 09/2012, Hypoport AG</small>
+  <small class="profile-links">
+    <a href="https://twitter.com/nitram509">
+      <img src="images/glyphicons_411_twitter.png" width="24" height="24">
+      @nitram509
+    </a>
+    &nbsp;
+    <a href="https://github.com/nitram509">
+      <img src="images/glyphicons_401_github.png" width="24" height="24">
+      nitram509
+    </a>
+  </small>
+
+  <div class="fade-in fade-out">
+    <button onclick="switchLanguage('de')" class="language-selector btn-lang-de">de</button>
+    <button onclick="switchLanguage('en')" class="language-selector btn-lang-en">en</button>
+  </div>
+
 </div>
 
 <!--  ******************************************************************************  -->
@@ -94,7 +104,7 @@
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="sortiere-server"
+<div class="mosho-slide" id="sort-servers"
      data-x=4400 data-y=0 data-z=1000
      data-transition="2s ease">
   <h4>
@@ -160,7 +170,8 @@
      data-x=1400 data-y=1200
         >
   <h2>
-    <img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo"/>
+    <span lang="de"><img class="auto-hide" src="images/Wikipedia-logo-v2-de.png" alt="wikipedia logo" width="135" height="155"/></span>
+    <span lang="en"><img class="auto-hide" src="images/Wikipedia-logo-v2-en.png" alt="wikipedia logo" width="135" height="155"/></span>
   </h2>
 
   <p class="well-background" style="text-align: justify">
@@ -175,14 +186,10 @@
       “
     </cite>
     <cite lang="en">
-      „
-      Ein Klassifikator (Informatik) ist ein Algorithmus, der Objekte (z.B. Dokumente)
-      anhand ihrer Merkmale in vorgegebene Kategorien einordnet.
-      <small>[...]</small>
-      <br>
-      Der Begriff Klassifikator wird meist spezifisch für solche Algorithmen verwendet,
-      in denen der Klassifikation von Objekten eine Lernphase ('Training') vorausgeht.
-      “
+      „In machine learning and statistics, classification is the problem of identifying
+      to which of a set of categories (sub-populations) a new observation belongs,
+      on the basis of a training set of data containing observations (or instances)
+      whose category membership is known. <small>[...]</small>“
     </cite>
   </p>
 </div>
@@ -203,30 +210,40 @@
       <span lang="en">Search (documents)</span>
     </li>
     <li>Spam filter (Bayes filter)</li>
-    <li>Produktempfehlungen</li>
+    <li>
+      <span lang="de">Produktempfehlungen</span>
+      <span lang="en">Product recommendations</span>
+    </li>
     <li>(...)</li>
   </ul>
 </div>
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="ansatz"
-     data-x=4400 data-y=1200 data-z=1000
-        >
-  <h3>Lösungsansatz</h3>
+<div class="mosho-slide" id="approach"
+     data-x=4400 data-y=1200 data-z=1000>
+  <h3>
+    <span lang="de">Lösungsansatz</span>
+    <span lang="en">Approach</span>
+  </h3>
 
   <p><b>
     Vector Space Classification<br>
-    mit<br>
-    Training ähnlich Rocchio</b>
-  </p>
+    <span lang="de">mit</span>
+    <span lang="en">using</span><br>
+    <span lang="de">Training ähnlich Rocchio</span>
+    <span lang="en">Training similar to Rocchio</span>
+  </b></p>
 </div>
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="vektoren"
+<div class="mosho-slide" id="vectors"
      data-x=1400 data-y=2400 data-z=2000
         >
-  <h3>Vektoren</h3>
+  <h3>
+    <span lang="de">Vektoren</span>
+    <span lang="en">Vectors</span>
+  </h3>
 
   <p>
     <img class="auto-hide white-background" src="images/MSP27551a32fd06e5c492e400006843aga8c534ahde.png"
@@ -245,25 +262,31 @@
 </div>
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="analytische-geometrie"
+<div class="mosho-slide" id="analytic-geometry"
      data-x=2800 data-y=2400 data-z=2000
         >
-  <h3>Analytische Geometrie</h3>
+  <h3>
+    <span lang="de">Analytische Geometrie</span>
+    <span lang="en">Analytic geometry</span>
+  </h3>
   <ul>
-    <li>Addition/Subtraktion</li>
-    <li>Skalarprodukt &#8793; Winkel</li>
-    <li>Kreuzprodukt</li>
-    <li>Länge/Betrag</li>
-    <li><strong>Einheitsvektor</strong></li>
-    <li><strong>Euklidischer Abstand</strong></li>
+    <li><span lang="de">Addition/Subtraktion</span><span lang="en">Addition/Subtraction</span></li>
+    <li><span lang="de">Skalarprodukt</span><span lang="en">Scalar multiplication</span> &#8793; <span lang="de">Winkel</span><span lang="en">angle</span></li>
+    <li><span lang="de">Kreuzprodukt</span><span lang="en">Dot product</span></li>
+    <li><span lang="de">Länge/Betrag</span><span lang="en">Length</span></li>
+    <li><strong><span lang="de">Einheitsvektor</span><span lang="en">Unit vector</span></strong></li>
+    <li><strong><span lang="de">Euklidischer Abstand</span><span lang="en">Euclidean distance</span></strong></li>
   </ul>
 </div>
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="erklaerung"
+<div class="mosho-slide" id="simplified"
      data-x=4200 data-y=2400 data-z=2000
         >
-  <h3>Vereinfacht</h3>
+  <h3>
+    <span lang="de">Vereinfacht</span>
+    <span lang="en">Simplified</span>
+  </h3>
 
   <p>
     <img class="auto-hide" style="width: 55%; height: 55%; margin: 25px;" src="images/Rechte-hand-regel-ex.png"
@@ -282,8 +305,58 @@
 </div>
 
 <!--  ******************************************************************************  -->
+<div class="mosho-slide" id="training"
+     data-x=6000 data-y=2400 data-z=2000
+        >
+  <h3>Training</h3>
+
+  <p>
+    <span lang="en">For each attribute choose the best value</span>
+    <span lang="de">Wähle den besten Wert pro Attribut</span>
+  </p>
+  <table class="code">
+    <thead>
+    <tr>
+      <td>
+        <span lang="de">Bytes/Sek</span>
+        <span lang="en">Bytes/Sec</span>
+      </td>
+      <td>&#216;
+        <span lang="de">Fehler</span>
+        <span lang="en">Errors</span>
+      </td>
+      <td>
+        <span lang="de">Entfernung(km)</span>
+        <span lang="en">Distance(km)</span>
+      </td>
+      <td>URL</td>
+    </tr>
+    </thead>
+    <tr>
+      <td class="ignore">140.200</td>
+      <td class="ignore">2</td>
+      <td class="chosen">&nbsp;200</td>
+      <td class="ignore">http://www... .de</td>
+    </tr>
+    <tr>
+      <td class="ignore">125.000</td>
+      <td class="chosen">1</td>
+      <td class="ignore">&nbsp;900</td>
+      <td class="ignore">http://www... .fr</td>
+    </tr>
+    <tr>
+      <td class="chosen">200.000</td>
+      <td class="ignore">3</td>
+      <td class="ignore">1200</td>
+      <td class="ignore">http://www... .se</td>
+    </tr>
+  </table>
+
+</div>
+
+<!--  ******************************************************************************  -->
 <div class="mosho-slide" id="import-math-1"
-     data-x=6000 data-y=2400 data-rotx="90"
+     data-x=8000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
 <pre class="code-math">
@@ -307,7 +380,7 @@ sim(q,t) = ---------------------------
 
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="import-math-2"
-     data-x=8000 data-y=2400 data-rotx="90"
+     data-x=10000 data-y=2400 data-rotx="180"
         >
   <h3>Import Math.*</h3>
 <pre class="code-math">
@@ -339,10 +412,9 @@ sim(q,t) = -----------------------------------------
   </p>
 </div>
 
-
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="sample-code"
-     data-x=10000 data-y=2400 data-rotx="90"
+     data-x=12000 data-y=2400 data-rotx="90"
         >
   <h3>Sample Code</h3>
   <pre class="prettyprint white-code"><code class="language-java">
@@ -380,7 +452,7 @@ sim(q,t) = -----------------------------------------
 
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="imagine"
-     data-x=8000 data-y=2400
+     data-x=14000 data-y=2400
         >
   <h3>n-dimensional</h3>
 
@@ -394,29 +466,25 @@ sim(q,t) = -----------------------------------------
 <div class="mosho-slide" id="thank-you"
      data-x=0 data-y=1200 data-rotx="90"
         >
-  <h1>Vielen Dank</h1>
+  <h1>
+    <span lang="de">Vielen Dank</span>
+    <span lang="en">Thank you</span>
+  </h1>
 
-  <p style="color: gray;">
-    <span class="fade-in">.</span>
-    <span class="fade-in">.</span>
-    <span class="fade-in">.</span>
-    <span class="fade-in-very-slow">.</span>
-    <span class="fade-in-very-slow">.</span>
-    <span class="fade-in-very-slow">.</span>
-  </p>
+  <p><br></p>
 
-  <p class="fade-in-very-slow fade-out">
+  <p>
     <a href="#burger-special">Burger Special</a>
   </p>
 </div>
 
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="links"
+<div class="mosho-slide" id="final-words"
      data-x=0 data-y=2400
-     data-next="titel"
+     data-next="title"
         >
-  <h2>Links</h2>
+  <h2>Final words</h2>
 
   <p>
     Eclipse Bug „Synchronization problem in mirror selection“<br/>
@@ -428,6 +496,17 @@ sim(q,t) = -----------------------------------------
     This presentation on github.com:<br/>
     <small>http://nitram509.github.com/preZENtations/vector-space-classification/index.html</small>
   </p>
+  <p><!-- --><br/><!-- --></p>
+
+  <p>
+    Third Party Licenses<br>
+    <small>
+      This presentation uses <a href="http://glyphicons.com/">GLYPHICONS</a>,
+      Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+    </small>
+  </p>
+
+  
 </div>
 
 
@@ -494,11 +573,15 @@ sim(q,t) = -----------------------------------------
 </div>
 
 </body>
-<script src="js/mosho.js" type="text/javascript"></script>
+<script src="js/mosho.min.js" type="text/javascript"></script>
 <script src="js/prettify.js" type="text/javascript"></script>
 <script src="js/burgers.js" type="text/javascript"></script>
 <script src="js/mkirst-vector-space-classification.js" type="text/javascript"></script>
 <script>
   prettyPrint();
+</script>
+<script type="text/javascript">
+  var language = window.navigator.userLanguage || window.navigator.language;
+  switchLanguage(language);
 </script>
 </html>

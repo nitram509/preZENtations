@@ -437,7 +437,7 @@ strong, b {
 .ui-slider-horizontal .ui-slider-handle {
   top: -5px;
   margin-left: -5px;
-  background:  mediumseagreen !important;
+  background: mediumseagreen !important;
 }
 
 .ui-slider-horizontal .ui-slider-range {
@@ -525,4 +525,45 @@ strong, b {
   -webkit-border-bottom-right-radius: 4px /*{cornerRadius}*/;
   -khtml-border-bottom-right-radius: 4px /*{cornerRadius}*/;
   border-bottom-right-radius: 4px /*{cornerRadius}*/;
+}
+
+#title .profile-links a {
+  background: none !important;
+}
+
+#title .profile-links img {
+  vertical-align: middle;
+}
+
+td.ignore {
+  color: #2f4f4f;
+}
+
+td.chosen {
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+}
+
+.language-selector {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+
+  margin: 1px;
+  border: none;
+  background: rgba(50, 50, 50, 1);
+  color: silver;
+  cursor: pointer;
+  padding: 3px 6px 3px 6px;
+}
+
+.language-selector:hover {
+  margin: 0;
+  border: 1px solid;
+}
+
+.language-selector.active {
+  text-decoration: underline;
 }

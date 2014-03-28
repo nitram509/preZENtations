@@ -1,0 +1,9 @@
+section.feedback img {
+  border: none;
+  vertical-align: middle;
+}
+
+h1 span.highlight-red {
+  color:red;
+  font-weight: bold;
+}
