@@ -9,7 +9,11 @@
   box-shadow: none;
 }
 
-img.thatsme {
+#presenting-me img.thatsme {
+  -webkit-transition: -webkit-transform 10s;
+  -moz-transition: -moz-transform 10s;
+  transition: transform 10s;
+
   width: 200px;
 }
 
@@ -19,6 +23,7 @@ img.thatsme.rotated {
   transform: rotate(-20deg);
 }
 
+img.thatsme.right-rotated,
 img.thatsme.rotated:hover {
   -webkit-transform: rotate(20deg);
   -moz-transform: rotate(20deg);
