@@ -1,4 +1,5 @@
 // require SlideAnimationController.js
+// require jQuery.js
 
 (function () {
   var running = false;
