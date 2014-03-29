@@ -36,9 +36,9 @@
       }
     },
     onLeave: function (event) {
+      running = false;
       bedcon.removeClass("active1");
       bedcon.removeClass("active2");
-      running = false;
     }
   };
 
