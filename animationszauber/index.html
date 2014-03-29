@@ -46,7 +46,7 @@
   </p>
 </section>
 
-<section>
+<section data-state="someState" id="some-slide">
   <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
   <br><br>
 
@@ -526,33 +526,12 @@ tween1.start();
 </section>
 
 
-<section>
+<section id="animation-fun">
 
   <h2>Animation Fun</h2>
 
   <div>
     <img id="we-need-you" class="box" src="img/we_need_you2.jpg" alt="we need you"/>
-    <script type="text/javascript">
-      (function(){
-        var up = false;
-
-        function auto_toggle_mr_t(e){
-          var bedcon = $('#we-need-you');
-          if (bedcon.hasClass("active")) {
-            bedcon.removeClass("active");
-          } else {
-            bedcon.addClass("active");
-          }
-          up = !up;
-          if (up) {
-            setTimeout(auto_toggle_mr_t, 500);
-          } else {
-            setTimeout(auto_toggle_mr_t, 3000);
-          }
-        }
-        setTimeout(auto_toggle_mr_t, 3000);
-      })();
-    </script>
   </div>
 
 </section>
@@ -607,6 +586,9 @@ tween1.start();
     ]
   });
 </script>
+
+<script type="text/javascript" src="js/SlideAnimationController.js"></script>
+<script type="text/javascript" src="js/slides/animation-fun.js"></script>
 
 </body>
 </html>
