@@ -393,21 +393,22 @@ logo.animate({color: 255}, {
       <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon" title="Click to start/stop animation"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
-var logo = document.getElementById("bedcon-tween");
-var tween1 = new TWEEN.Tween( { x: 10 } )
-            .to( { x: 190 } )
-            .easing( TWEEN.Easing.Elastic.InOut )
-            .onUpdate( function () {
-              logo.style.left = this.x + 'px';
-            } );
-var tween2 = new TWEEN.Tween( { y: 270 } )
-            .to( { y: 10 } )
-            .easing( TWEEN.Easing.Quartic.InOut )
-            .onUpdate( function () {
-              logo.style.bottom = this.y + 'px';
-            } );
+img = document.getElementById("bedcon-tween");
+tween1 = new TWEEN.Tween( { x: 10 } )
+   .to( { x: 190 }, 3000 )
+   .onUpdate( function () {
+     img.style.left = this.x + 'px';  });
+tween1r = new TWEEN.Tween( { r : 0} )
+   .to( { r: 360 }, 3000)
+   .onUpdate(function () {
+     img.style.transform="rotate("+this.r+"deg)";});
+tween2 = new TWEEN.Tween( { y: 270 } )
+   .to( { y: 10 } )
+   .onUpdate( function () {
+     img.style.bottom = this.y + 'px';  });
 tween1.chain(tween2);
 tween1.start();
+tween1r.start();
 </code></pre>
 
   </div>
