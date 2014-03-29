@@ -268,28 +268,14 @@
 
 </section>
 
-<!--<section>-->
 
-  <!--<h2>CSS Formular-Fokus</h2>-->
-
-  <!--<div>-->
-    <!--<img src="img/bootstrap-fokus-anim.gif" alt="bootstrap-fokus-anim"/>-->
-  <!--</div>-->
-  <!--<p>-->
-    <!--<small><small>-->
-      <!--<a href="http://getbootstrap.com/css/#forms" target="_blank">http://getbootstrap.com/css/#forms</a>-->
-    <!--</small></small>-->
-  <!--</p>-->
-
-<!--</section>-->
-
-<section>
+<section id="css-bilder">
 
   <h2>CSS Bilder</h2>
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-anim" class="box" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
+      <img id="bedcon-anim-3d" class="box" title="Click to start/stop animation" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
 .box {
@@ -311,17 +297,6 @@
       </small></small>
     </p>
 
-    <button id="btn-bedcon-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; ">Animate</button>
-    <script type="text/javascript">
-      $("#btn-bedcon-anim").click(function(e){
-        var bedcon = $('#bedcon-anim');
-        if (bedcon.hasClass("active")) {
-          bedcon.removeClass("active");
-        } else {
-          bedcon.addClass("active");
-        }
-      })
-    </script>
   </div>
 
 </section>
@@ -368,13 +343,13 @@
 </section>
 
 
-<section>
+<section id="js-jquery-beispiel">
 
   <h2>JS - jQuery Beispiel</h2>
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
+      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" title="Click to start/stop animation" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
 var logo = $('#bedcon-logo');
@@ -393,26 +368,6 @@ logo.animate({color: 255}, {
 });
 </code></pre>
 
-    <button id="btn-bedcon-anim-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position: relative;top: -20px;">Animate</button>
-    <script type="text/javascript">
-      var bedcon = $('#bedcon-anim-anim')[0];
-      $('#btn-bedcon-anim-anim').click(function(e){
-        var properties = {color: 255};
-        $('#bedcon-anim-anim').animate(properties, {
-          duration: 4000,
-          easing: 'swing',
-          step: function (now, tween) {
-            var color = 255 - (now | 0);
-            this.style.backgroundColor = 'rgb('+color+','+color+','+color+')'
-          },
-          complete: function() {
-            setTimeout(function () {
-              bedcon.style.backgroundColor = '#fff'
-            }, 2000);
-          }
-        });
-      })
-    </script>
   </div>
 
 </section>
@@ -435,7 +390,7 @@ logo.animate({color: 255}, {
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon"/>
+      <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon" title="Click to start/stop animation"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
 var logo = document.getElementById("bedcon-tween");
@@ -535,9 +490,12 @@ tween1.start();
   });
 </script>
 
+<!--<script type="text/javascript" src="js/tween.min.js"></script>-->
 <script type="text/javascript" src="js/tween.min.js"></script>
 
 <script type="text/javascript" src="js/slides/presenting-me.js"></script>
+<script type="text/javascript" src="js/slides/css-bilder.js"></script>
+<script type="text/javascript" src="js/slides/js-jquery-beispiel.js"></script>
 <script type="text/javascript" src="js/slides/tweening-beispiel.js"></script>
 <script type="text/javascript" src="js/slides/animation-fun.js"></script>
 

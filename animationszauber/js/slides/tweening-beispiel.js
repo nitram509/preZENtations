@@ -4,49 +4,66 @@
 
 (function () {
 
+  var startDelay = 3000;
+  var duration = 3000;
+
   var running = false;
   var bedconLogo = document.getElementById("bedcon-tween");
 
-  $(bedconLogo).click(function (event) {
-    running = !running;
-    animate();
-  });
-
   function init() {
-    var tween1 = new TWEEN.Tween({ x: 10 })
-        .to({ x: 190 })
+
+    var animModel = {
+      x: 10,
+      y: 260,
+      minX : 10,
+      minY : 0,
+      maxX : 190,
+      maxY : 260
+    };
+
+    var tween1 = new TWEEN.Tween(animModel)
+        .to({ x: animModel.maxX }, duration)
         .easing(TWEEN.Easing.Elastic.InOut)
         .onUpdate(function () {
           bedconLogo.style.left = this.x + 'px';
         });
-    var tween2 = new TWEEN.Tween({ y: 260 })
-        .to({ y: 0 })
+    var tween2 = new TWEEN.Tween(animModel)
+        .to({ y: animModel.minY }, duration)
         .easing(TWEEN.Easing.Quartic.InOut)
         .onUpdate(function () {
           bedconLogo.style.bottom = this.y + 'px';
         });
-    var tween3 = new TWEEN.Tween({ x: 190 })
-        .to({ x: 10 })
-        .easing(TWEEN.Easing.Quintic.InOut)
+    var tween3 = new TWEEN.Tween(animModel)
+        .to({ x: animModel.minX }, duration)
+        .easing(TWEEN.Easing.Elastic.InOut)
         .onUpdate(function () {
           bedconLogo.style.left = this.x + 'px';
         });
-    var tween4 = new TWEEN.Tween({ y: 0 })
-        .to({ y: 260 })
-        .easing(TWEEN.Easing.Cubic.InOut)
+    var tween4 = new TWEEN.Tween(animModel)
+        .to({ y: animModel.maxY }, duration)
+        .easing(TWEEN.Easing.Quartic.InOut)
         .onUpdate(function () {
           bedconLogo.style.bottom = this.y + 'px';
         });
+
     tween1.chain(tween2);
     tween2.chain(tween3);
     tween3.chain(tween4);
     tween4.chain(tween1);
-    tween1.start();
+
+    function startStopAnimation() {
+      if (running) {
+        tween1.start();
+      } else {
+        tween1.stop();
+      }
+      animate();
+    }
 
     var slideChangeHandler = {
       onEnter: function (event) {
         running = true;
-        animate();
+        setTimeout(startStopAnimation, startDelay);
       },
       onLeave: function (event) {
         running = false;
@@ -54,6 +71,11 @@
     };
 
     registerSlideChangeHandler('tweening-beispiel', slideChangeHandler);
+
+    $(bedconLogo).click(function (event) {
+      running = !running;
+      startStopAnimation();
+    });
 
   }
 
