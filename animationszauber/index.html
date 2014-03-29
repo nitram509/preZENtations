@@ -404,11 +404,11 @@ tween1r = new TWEEN.Tween( { r : 0} )
      img.style.transform="rotate("+this.r+"deg)";});
 tween2 = new TWEEN.Tween( { y: 270 } )
    .to( { y: 10 } )
+   .easing(TWEEN.Easing.Elastic.InOut)
    .onUpdate( function () {
      img.style.bottom = this.y + 'px';  });
 tween1.chain(tween2);
-tween1.start();
-tween1r.start();
+tween1.start();  tween1r.start();
 </code></pre>
 
   </div>
