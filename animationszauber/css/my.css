@@ -193,3 +193,55 @@ img#bedcon-tween {
   border-radius: 4px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
+/* ************************************* */
+
+.kontakt {
+  color: #93A1A1 !important;
+}
+
+/* ************************************* */
+
+/*#scroller {*/
+  /*position: absolute;*/
+  /*width: 600px;*/
+  /*height: 300px;*/
+  /*bottom: 0;*/
+  /*left: 50%;*/
+  /*margin-left: -9em;*/
+  /*font-size: 350%;*/
+  /*font-weight: bold;*/
+  /*text-align: justify;*/
+  /*overflow: hidden;*/
+
+  /*-webkit-transform-origin: 50% 100%;*/
+  /*-moz-transform-origin: 50% 100%;*/
+  /*transform-origin: 50% 100%;*/
+
+  /*-webkit-transform: perspective(300px) rotateX(25deg);*/
+  /*-moz-transform: perspective(300px) rotateX(25deg);*/
+  /*transform: perspective(300px) rotateX(25deg);*/
+/*}*/
+
+/*#scroller:after*/
+/*{*/
+  /*position: absolute;*/
+  /*content: ' ';*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*top: 0;*/
+  /*bottom: 60%;*/
+  /*background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);*/
+  /*pointer-events: none;*/
+/*}*/
+
+/*#titlecontent {*/
+  /*position: absolute;*/
+  /*top: 100%;*/
+  /*animation: scroll 20s linear 4s infinite;*/
+/*}*/
+
+/*@keyframes scroll {*/
+  /*0% { top: 100%; }*/
+  /*100% { top: -170%; }*/
+/*}*/
