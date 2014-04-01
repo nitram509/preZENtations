@@ -26,7 +26,6 @@
   <script src="lib/js/html5shiv.js"></script>
   <![endif]-->
   <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="js/tween.min.js"></script>
 </head>
 
 <body>
@@ -46,7 +45,7 @@
   </p>
 </section>
 
-<section>
+<section id="presenting-me">
   <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
   <br><br>
 
@@ -123,7 +122,7 @@
 
   <h2>Prinzip</h2>
 
-  <strong>Konsistenz > Vielfahlt</strong>
+  <strong>Konsistenz > Vielfalt</strong>
 
 </section>
 
@@ -269,28 +268,14 @@
 
 </section>
 
-<!--<section>-->
 
-  <!--<h2>CSS Formular-Fokus</h2>-->
-
-  <!--<div>-->
-    <!--<img src="img/bootstrap-fokus-anim.gif" alt="bootstrap-fokus-anim"/>-->
-  <!--</div>-->
-  <!--<p>-->
-    <!--<small><small>-->
-      <!--<a href="http://getbootstrap.com/css/#forms" target="_blank">http://getbootstrap.com/css/#forms</a>-->
-    <!--</small></small>-->
-  <!--</p>-->
-
-<!--</section>-->
-
-<section>
+<section id="css-bilder">
 
   <h2>CSS Bilder</h2>
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-anim" class="box" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
+      <img id="bedcon-anim-3d" class="box" title="Click to start/stop animation" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
 .box {
@@ -312,17 +297,6 @@
       </small></small>
     </p>
 
-    <button id="btn-bedcon-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; ">Animate</button>
-    <script type="text/javascript">
-      $("#btn-bedcon-anim").click(function(e){
-        var bedcon = $('#bedcon-anim');
-        if (bedcon.hasClass("active")) {
-          bedcon.removeClass("active");
-        } else {
-          bedcon.addClass("active");
-        }
-      })
-    </script>
   </div>
 
 </section>
@@ -331,7 +305,7 @@
   <h2>CSS3 Advanced++</h2>
   <div>
     <img src="img/at-at-walker.png" alt="at-at-walker" style="height: 180px"/>
-    <img src="img/mozilla-dev-derby.png" alt="mozilla-dev-derby" style="height: 180px"/>
+    <a href="copy/vijJl.html" target="_blank"><img src="img/mozilla-dev-derby.png" alt="mozilla-dev-derby" style="height: 180px"/></a>
     <img src="img/creative-css3-menues.png" alt="creative-css3-menues" style="height: 180px"/>
   </div>
   <p>
@@ -368,14 +342,30 @@
 
 </section>
 
-
 <section>
+
+  <h2>JS Fading & Sliding</h2>
+
+  <div>
+    <img src="img/todo-list-anim.gif" alt="todo-list-animation"/>
+    <p>
+      <small><small>
+        <a href="todo-list/index.html" target="_blank">ToDo List Beispiel</a>
+      </small></small>
+    </p>
+
+  </div>
+
+</section>
+
+
+<section id="js-jquery-beispiel">
 
   <h2>JS - jQuery Beispiel</h2>
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
+      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" title="Click to start/stop animation" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
 var logo = $('#bedcon-logo');
@@ -394,26 +384,6 @@ logo.animate({color: 255}, {
 });
 </code></pre>
 
-    <button id="btn-bedcon-anim-anim" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position: relative;top: -20px;">Animate</button>
-    <script type="text/javascript">
-      var bedcon = $('#bedcon-anim-anim')[0];
-      $('#btn-bedcon-anim-anim').click(function(e){
-        var properties = {color: 255};
-        $('#bedcon-anim-anim').animate(properties, {
-          duration: 4000,
-          easing: 'swing',
-          step: function (now, tween) {
-            var color = 255 - (now | 0);
-            this.style.backgroundColor = 'rgb('+color+','+color+','+color+')'
-          },
-          complete: function() {
-            setTimeout(function () {
-              bedcon.style.backgroundColor = '#fff'
-            }, 2000);
-          }
-        });
-      })
-    </script>
   </div>
 
 </section>
@@ -430,84 +400,33 @@ logo.animate({color: 255}, {
 </section>
 
 
-<section>
+<section id="tweening-beispiel">
 
   <h2>Tweening Beispiel</h2>
 
   <div>
     <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
-      <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon"/>
+      <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon" title="Click to start/stop animation"/>
     </div>
 <pre style="width:600px;margin-left: 310px;"><code data-trim>
-var logo = document.getElementById("bedcon-tween");
-var tween1 = new TWEEN.Tween( { x: 10 } )
-            .to( { x: 190 } )
-            .easing( TWEEN.Easing.Elastic.InOut )
-            .onUpdate( function () {
-              logo.style.left = this.x + 'px';
-            } );
-var tween2 = new TWEEN.Tween( { y: 270 } )
-            .to( { y: 10 } )
-            .easing( TWEEN.Easing.Quartic.InOut )
-            .onUpdate( function () {
-              logo.style.bottom = this.y + 'px';
-            } );
+img = document.getElementById("bedcon-tween");
+tween1 = new TWEEN.Tween( { x: 10 } )
+   .to( { x: 190 }, 3000 )
+   .onUpdate( function () {
+     img.style.left = this.x + 'px';  });
+tween1r = new TWEEN.Tween( { r : 0} )
+   .to( { r: 360 }, 3000)
+   .onUpdate(function () {
+     img.style.transform="rotate("+this.r+"deg)";});
+tween2 = new TWEEN.Tween( { y: 270 } )
+   .to( { y: 10 } )
+   .easing(TWEEN.Easing.Elastic.InOut)
+   .onUpdate( function () {
+     img.style.bottom = this.y + 'px';  });
 tween1.chain(tween2);
-tween1.start();
+tween1.start();  tween1r.start();
 </code></pre>
 
-    <button id="btn-bedcon-tween" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position: relative; top:-20px">Animate</button>
-    <script type="text/javascript">
-      $("#btn-bedcon-tween").click(function(e){
-        var bedcon = $('#bedcon-tween');
-        if (bedcon.hasClass("active")) {
-          bedcon.removeClass("active");
-        } else {
-          bedcon.addClass("active");
-        }
-      })
-    </script>
-    <script>
-      init();
-      animate();
-      function init() {
-        var bedcon = document.getElementById("bedcon-tween");
-        var tween1 = new TWEEN.Tween( { x: 10 } )
-                .to( { x: 190 } )
-                .easing( TWEEN.Easing.Elastic.InOut )
-                .onUpdate( function () {
-                  bedcon.style.left = this.x + 'px';
-                } );
-        var tween2 = new TWEEN.Tween( { y: 310 } )
-                .to( { y: 60 } )
-                .easing( TWEEN.Easing.Quartic.InOut )
-                .onUpdate( function () {
-                  bedcon.style.bottom = this.y + 'px';
-                } );
-        var tween3 = new TWEEN.Tween( { x: 190 } )
-                .to( { x: 10 } )
-                .easing( TWEEN.Easing.Quintic.InOut )
-                .onUpdate( function () {
-                  bedcon.style.left = this.x + 'px';
-                } );
-        var tween4 = new TWEEN.Tween( { y: 60 } )
-                .to( { y: 310 } )
-                .easing( TWEEN.Easing.Cubic.InOut )
-                .onUpdate( function () {
-                  bedcon.style.bottom = this.y + 'px';
-                } );
-        tween1.chain(tween2);
-        tween2.chain(tween3);
-        tween3.chain(tween4);
-        tween4.chain(tween1);
-        tween1.start();
-      }
-      function animate() {
-        requestAnimationFrame(animate);
-        TWEEN.update();
-      }
-
-    </script>
   </div>
 
 </section>
@@ -518,7 +437,7 @@ tween1.start();
   <h2>Fazit</h2>
 
   <p><strong>JS + CSS >> JS xor CSS</strong></p>
-  <p><strong>Konsistenz >> Vielfahlt</strong></p>
+  <p><strong>Konsistenz >> Vielfalt</strong></p>
   <br>
   <p><strong>Einfach => Frameworks</strong></p>
   <p><strong>Komplex => ...</strong></p>
@@ -526,33 +445,12 @@ tween1.start();
 </section>
 
 
-<section>
+<section id="animation-fun">
 
   <h2>Animation Fun</h2>
 
   <div>
     <img id="we-need-you" class="box" src="img/we_need_you2.jpg" alt="we need you"/>
-    <script type="text/javascript">
-      (function(){
-        var up = false;
-
-        function auto_toggle_mr_t(e){
-          var bedcon = $('#we-need-you');
-          if (bedcon.hasClass("active")) {
-            bedcon.removeClass("active");
-          } else {
-            bedcon.addClass("active");
-          }
-          up = !up;
-          if (up) {
-            setTimeout(auto_toggle_mr_t, 500);
-          } else {
-            setTimeout(auto_toggle_mr_t, 3000);
-          }
-        }
-        setTimeout(auto_toggle_mr_t, 3000);
-      })();
-    </script>
   </div>
 
 </section>
@@ -560,10 +458,42 @@ tween1.start();
 
 <section>
 
-  <h2>Danke</h2>
+  <h2>Danke &sdot; Thanks &sdot; Merci</h2>
 
-  <p>Links ...</p>
-  <p>Kontakt ...</p>
+ <div>
+    <p><a target="_blank" href="http://www.aerotwist.com/lab/">Aerotwist's labs</a></p>
+    <p><a target="_blank" href="http://johnpolacek.github.io/superscrollorama/">Super Scroll Orama</a></p>
+    <p><a target="_blank" href="https://medium.com/design-ux/8068a5e4cb82">Web apps deserve sexy transitions too!</a></p>
+    <p><a target="_blank" href="http://hakim.se/">Hakim's Experiments, Thoughts & Projects</a></p>
+    <p><a target="_blank" href="http://easings.net">http://easings.net</a></p>
+    <p><a target="_blank" href="http://codepen.io/Sonick/pen/vijJl">http://codepen.io/Sonick/pen/vijJl</a></p>
+    <p><a target="_blank" href="http://anthonycalzadilla.com/css3-ATAT/">http://anthonycalzadilla.com/css3-ATAT/</a></p>
+    <p><a target="_blank" href="http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/">http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/</a></p>
+
+    <p>&sdot;</p>
+
+    <p><a target="_blank" href="https://github.com/sole/tween.js/">sole/tween.js - Javascript Tweening Engine</a></p>
+    <p><a target="_blank" href="https://github.com/hakimel/reveal.js">hakimel/reveal.js - The HTML Presentation Framework</a></p>
+
+    <p>&sdot;</p>
+
+    <p><a target="_blank" href="http://js1k.com/">JS1k: The JavaScript code golfing competition </a></p>
+  </div>
+
+  <div style="font-size: 80%;">
+    &nbsp;<br>
+
+    <p>&copy;2014 Martin W. Kirst</p>
+
+    <a target="_blank" class="kontakt" href="https://twitter.com/nitram509">Twitter:&nbsp;@nitram509</a>
+    &sdot;
+    <a target="_blank" class="kontakt" href="https://github.com/nitram509">Github:&nbsp;nitram509</a>
+    &sdot;
+    <a target="_blank" class="kontakt" id="dont-spam-me" href="mailto:info@example.org">info@example.org</a>
+    <script type="text/javascript">
+      $('#dont-spam-me').attr("href", "mailto:x.nitram509@gmail.com").text("x.nitram509@gmail.com");
+    </script>
+  </div>
 
 </section>
 
@@ -573,12 +503,16 @@ tween1.start();
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
+<script type="text/javascript" src="js/SlideChangeController.js"></script>
 
 <script>
   Reveal.initialize({
-    controls: true,
-    progress: true,
+    slideNumber: false,
+    controls: false,
+    progress: false,
     history: true,
+    keyboard: true,
+    overview: false,
     center: true,
     theme: 'moon',
     transition: 'fade',
@@ -604,6 +538,15 @@ tween1.start();
     ]
   });
 </script>
+
+<!--<script type="text/javascript" src="js/tween.min.js"></script>-->
+<script type="text/javascript" src="js/tween.min.js"></script>
+
+<script type="text/javascript" src="js/slides/presenting-me.js"></script>
+<script type="text/javascript" src="js/slides/css-bilder.js"></script>
+<script type="text/javascript" src="js/slides/js-jquery-beispiel.js"></script>
+<script type="text/javascript" src="js/slides/tweening-beispiel.js"></script>
+<script type="text/javascript" src="js/slides/animation-fun.js"></script>
 
 </body>
 </html>
