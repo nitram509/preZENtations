@@ -44,7 +44,7 @@
 
   function anim() {
     x += 1;
-    x = x % (4 * duration);
+    x = x % (4 * duration + duration);
     updateLineScroller(x);
     if (running) {
       requestAnimationFrame(anim);
