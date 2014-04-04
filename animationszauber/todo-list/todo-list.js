@@ -20,6 +20,7 @@
       clone[0].style.height = '0px';
       clone[0].style.opacity = '0';
       $("#todo-item-panel").append(clone);
+      event.preventDefault();
     })();
     setTimeout(function fadeInAndSlideInTheNewInputDefered() {
       clone.fadeTo(fadingDuration, 1);
@@ -44,6 +45,8 @@
 
       fadeOutAndSlideUp();
       setTimeout(detachFromDomAfterCssAnimationIsDone, 1050);
+
+      event.preventDefault();
     });
   }
 
