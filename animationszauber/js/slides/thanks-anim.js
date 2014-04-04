@@ -4,6 +4,8 @@
 
 (function () {
 
+  "use strict";
+
   var x = 0;
   var running = false;
   var duration = 1000;
@@ -30,8 +32,10 @@
         var y = Math.cos(pos * Math.PI / duration) * middle + middle;
         ps[i].style.top = y + 'px';
 
-        var fontsize = Math.sin(pos * Math.PI / duration) * (60);
-        ps[i].style['font-size'] = ((40 + fontsize) | 0) + '%';
+        var fontsize = Math.sin(pos * Math.PI / duration) * (1);
+        ps[i].style['-webkit-transform'] = 'scale(' + (0.3 + fontsize) + ', ' + (0.3 + fontsize) + ')';
+        ps[i].style['-moz-transform'] = 'scale(' + (0.3 + fontsize) + ', ' + (0.3 + fontsize) + ')';
+        ps[i].style['transform'] = 'scale(' + (0.3 + fontsize) + ', ' + (0.3 + fontsize) + ')';
 
         var opacity = Math.min(Math.sin(pos * Math.PI / duration) + 0.1, 1);
         ps[i].style['opacity'] = '' + opacity;
