@@ -11,16 +11,9 @@
   <link href="css/fonts.css" rel="stylesheet" type="text/css">
   <link href="css/mkirst-vector-space-classification.css" rel="stylesheet" type="text/css">
   <link href="css/prettify.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/bootstrap.icon-large.css" type="text/css">
 
   <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="js/jquery-ui-1.8.23.min.js" type="text/javascript"></script>
-
-  <style type="text/css">
-    span[lang=de], cite[lang=de] {
-      display: none;
-    }
-  </style>
 
 </head>
 <body>
@@ -50,6 +43,12 @@
       nitram509
     </a>
   </small>
+
+  <div class="fade-in fade-out">
+    <button onclick="switchLanguage('de')" class="language-selector btn-lang-de">de</button>
+    <button onclick="switchLanguage('en')" class="language-selector btn-lang-en">en</button>
+  </div>
+
 </div>
 
 <!--  ******************************************************************************  -->
@@ -306,67 +305,8 @@
 </div>
 
 <!--  ******************************************************************************  -->
-<div class="mosho-slide" id="import-math-1"
-     data-x=6000 data-y=2400 data-rotx="90"
-        >
-  <h3>Import Math.*</h3>
-<pre class="code-math">
-                    ->   ->
-                    q  * t                       (dot product)
-sim(q,t) = ---------------------------
-             / || -> ||   || -> || \
-            |  || q  || * || t  ||  |      (euclidean lengths)
-             \                     /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )
-        </small>
-      </small>
-    </small>
-  </p>
-</div>
-
-<!--  ******************************************************************************  -->
-<div class="mosho-slide" id="import-math-2"
-     data-x=8000 data-y=2400 data-rotx="90"
-        >
-  <h3>Import Math.*</h3>
-<pre class="code-math">
-                            N
-                           ---
-                           \
-                            >   Q   * T
-                           /     ai    ai
-                           ---
-                          i = 1
-sim(q,t) = -----------------------------------------
-             /     ___________       ___________ \
-            |     |   N             |   N         |
-            |     |  ---            |  ---        |
-            |  _  |  \     2     _  |  \     2    |
-            |   \ |   >   Q    *  \ |   >   T     |
-            |    \|  /     ai      \|  /     ai   |
-            |     |  ---            |  ---        |
-             \    | i = 1           | i = 1      /
-</pre>
-  <p class="legend">
-    <small>
-      <small>
-        <small>
-          JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
-        </small>
-      </small>
-    </small>
-  </p>
-</div>
-
-
-<!--  ******************************************************************************  -->
 <div class="mosho-slide" id="training"
-     data-x=10000 data-y=2400 data-rotx="90"
+     data-x=6000 data-y=2400 data-z=2000
         >
   <h3>Training</h3>
 
@@ -415,6 +355,64 @@ sim(q,t) = -----------------------------------------
 </div>
 
 <!--  ******************************************************************************  -->
+<div class="mosho-slide" id="import-math-1"
+     data-x=8000 data-y=2400 data-rotx="180"
+        >
+  <h3>Import Math.*</h3>
+<pre class="code-math">
+                    ->   ->
+                    q  * t                       (dot product)
+sim(q,t) = ---------------------------
+             / || -> ||   || -> || \
+            |  || q  || * || t  ||  |      (euclidean lengths)
+             \                     /
+</pre>
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          JavE5.0://sim(q,t) = vec(q) * vec(t) / ( ||vec(q)|| * ||vec(t)|| )
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
+
+<!--  ******************************************************************************  -->
+<div class="mosho-slide" id="import-math-2"
+     data-x=10000 data-y=2400 data-rotx="180"
+        >
+  <h3>Import Math.*</h3>
+<pre class="code-math">
+                            N
+                           ---
+                           \
+                            >   Q   * T
+                           /     ai    ai
+                           ---
+                          i = 1
+sim(q,t) = -----------------------------------------
+             /     ___________       ___________ \
+            |     |   N             |   N         |
+            |     |  ---            |  ---        |
+            |  _  |  \     2     _  |  \     2    |
+            |   \ |   >   Q    *  \ |   >   T     |
+            |    \|  /     ai      \|  /     ai   |
+            |     |  ---            |  ---        |
+             \    | i = 1           | i = 1      /
+</pre>
+  <p class="legend">
+    <small>
+      <small>
+        <small>
+          JavE5.0://sim(q,t) = sum(i=1..N;Q_ai*T_ai) / (sqrt(sum(i=1..N;Q^2_ai)) * sqrt(sum(i=1..N;T^2_ai)) )
+        </small>
+      </small>
+    </small>
+  </p>
+</div>
+
+<!--  ******************************************************************************  -->
 <div class="mosho-slide" id="sample-code"
      data-x=12000 data-y=2400 data-rotx="90"
         >
@@ -454,7 +452,7 @@ sim(q,t) = -----------------------------------------
 
 <!--  ******************************************************************************  -->
 <div class="mosho-slide" id="imagine"
-     data-x=8000 data-y=2400
+     data-x=14000 data-y=2400
         >
   <h3>n-dimensional</h3>
 
@@ -581,5 +579,9 @@ sim(q,t) = -----------------------------------------
 <script src="js/mkirst-vector-space-classification.js" type="text/javascript"></script>
 <script>
   prettyPrint();
+</script>
+<script type="text/javascript">
+  var language = window.navigator.userLanguage || window.navigator.language;
+  switchLanguage(language);
 </script>
 </html>

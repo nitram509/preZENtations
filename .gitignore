@@ -2,3 +2,6 @@
 *.iml
 .~*
 out/
+node_modules/
+.sass-cache
+tmp/*
