@@ -23,8 +23,10 @@ function display(number) {
       var y = Math.cos(pos * Math.PI / duration) * middle + middle;
       ps[i].style.top = y + 'px';
 
-      var fontsize = Math.sin(pos * Math.PI / duration) * (100);
-      ps[i].style['font-size'] = ((100 + fontsize) | 0) + '%';
+      var fontsize = Math.sin(pos * Math.PI / duration) * (1);
+      ps[i].style['-webkit-transform'] = 'scale(' + (1 + fontsize) + ', ' + (1 + fontsize) + ')';
+      ps[i].style['-moz-transform'] = 'scale(' + (1 + fontsize) + ', ' + (1 + fontsize) + ')';
+      ps[i].style['transform'] = 'scale(' + (1 + fontsize) + ', ' + (1 + fontsize) + ')';
 
       var opacity = Math.min(Math.sin(pos * Math.PI / duration) + 0.1, 1);
       ps[i].style['opacity'] = '' + opacity;
