@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Animationszauber - Geringer Aufwand, maximale Wirkung</title>
+  <meta name="description"
+        content="Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen. Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken. Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“, lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern. Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster. Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht. Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.">
+  <meta name="author" content="Martin W. Kirst">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/moon.css">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="css/my.css">
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'css/print/pdf.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+  <h1>Animationszauber</h1>
+
+  <h3>Geringer Aufwand, maximale Wirkung</h3>
+
+  <p>
+    <small>&copy; 03/2014 <a href="https://github.com/nitram509" target="_blank">Martin W. Kirst</a> / <a href="http://twitter.com/nitram509" target="_blank">@nitram509</a>
+    </small>
+  </p>
+</section>
+
+<section id="presenting-me">
+  <img class="image thatsme rotated" src="img/NID2214.jpg" alt="thats me">
+  <br><br>
+
+  <div>
+    <small>
+      <a href="https://twitter.com/nitram509" target="_blank">Twitter</a>
+      &sdot;
+      <a href="https://github.com/nitram509" target="_blank">Github</a>
+      &sdot;
+      <a href="https://sourceforge.net/u/userid-1140154" target="_blank">SourceForge</a>
+    </small>
+    <br>
+    <del>UX-Experte</del>
+    <br>
+    Von ASM bis Zope<br>
+    1k Demos (378 Byte)<br>
+    &hearts; HTML + CSS + JS &hearts;<br>
+  </div>
+
+</section>
+
+<section>
+
+  <h2>Agenda</h2>
+  <ul>
+    <li>Wirkung</li>
+    <li>Grundlagen Animation</li>
+    <li>Prinzipien</li>
+    <li>CSS Animationen</li>
+    <li>Javascript Animationen</li>
+    <li>Tweens / Tweening</li>
+  </ul>
+
+  <aside class="notes">
+    Einleitung
+
+    Worum gehts:
+    Als Entwickler fokussieren wir unsere Arbeit meist auf die fachlichen Funktionen unserer Anwendungen.
+    Dabei mappen wir Modelle auf grafische Elemente und erstellen damit Eingabemasken.
+    Leider wirken diese Eingabemasken häufig trist und kühl. Mit ein wenig „Animations-Zauber“,
+    lässt sich hier Abhilfe schaffen und der Eindruck bei den Anwendern verbessern.
+    Dieser Talk zeigt mögliche Herangehensweisen und Animations-Muster.
+    Mit diesen einfachen Mitteln wird die Wahrnehmung und die Akzeptanz einer Anwendung deutlich erhöht.
+
+    Nutzen:
+    Von den vielen Web-Beispielen kann sich jeder do's and don'ts abschauen.
+
+    Ziel:
+    Überblick, Anregungen, und den "Ach so einfach ist das Effekt" ;-)
+
+  </aside>
+
+</section>
+
+<section>
+
+  <h2>Wirkung</h2>
+
+  <p>Gibt Feedback</p>
+
+  <p>Lenkt Aufmerksamkeit</p>
+
+  <p>Erzeugt Emotion/Gefühl</p>
+
+  <aside class="notes">
+    Repräsentationssysteme:
+    Kinästhetische Typen, weil Emotion und Gefühl
+    Visuelle Lerntypen
+  </aside>
+
+</section>
+
+<section>
+
+  <h2>Prinzip</h2>
+
+  <strong>Konsistenz > Vielfalt</strong>
+
+</section>
+
+<section>
+  <h2>Was?</h2>
+
+  <p>Position</p>
+
+  <p>Rotation</p>
+
+  <p>Skalierung</p>
+
+  <p>Transformation</p>
+</section>
+
+<section>
+  <h2>Wie?</h2>
+
+  <p>Laufzeit (duration)</p>
+
+  <p>Verzögerung (delay)</p>
+
+  <p>Veränderungskurve (easing)</p>
+</section>
+
+<section>
+
+  <h2>Easing</h2>
+
+  <p>Hands on...</p>
+
+</section>
+
+<section>
+
+  <h2>Easing</h2>
+
+  <p>
+    <img src="img/easing-default.png" alt="default" title="default"/>
+    <img src="img/easing-ease-in.png" alt="ease-in" title="ease-in"/>
+    <img src="img/easing-ease-out.png" alt="ease-out" title="ease-out"/>
+    <img src="img/easing-ease-in-out.png" alt="ease-in-out" title="ease-in-out"/>
+    <img src="img/easing-cubic-bezier.png" alt="cubic-bezier" title="cubic-bezier"/>
+  </p>
+
+  <p>
+    <small>&laquo; Weitere ... http://easings.net &raquo;</small>
+  </p>
+
+</section>
+
+
+<section>
+
+  <h2>CSS Animation - Einfach</h2>
+
+
+  <div>
+    <div style="width: 500px; height: 370px; background-color: whitesmoke; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="rocket-1" class="start" src="img/rocket-128x127.png" alt="rocket"/>
+    </div>
+<pre style="width:400px;margin-left: 510px;"><code data-trim>
+#rocket {
+  transition:
+    bottom 4s ease-out,
+    left 4s ease-out;
+}
+#rocket.start {
+  bottom: 11px;
+  left: -13px;
+}
+#rocket.end {
+  bottom: 300px;
+  left: 385px;
+}
+</code></pre>
+    <button id="lift-off-1" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; left:130px; top:-22px">Lift-off ...</button>
+    <script type="text/javascript">
+      $("#lift-off-1").click(function(e){
+        var rocket = $('#rocket-1');
+        var button = $('#lift-off-1');
+        if (rocket.hasClass("end")) {
+          rocket.removeClass("end");
+          button.text("Lift-off ...");
+        } else {
+          rocket.addClass("end");
+          button.text("Landing ...");
+        }
+      })
+    </script>
+  </div>
+
+</section>
+
+<section>
+
+  <h2>CSS Animation - Komplex</h2>
+
+  <div>
+    <div style="width: 500px; height: 370px; background-color: whitesmoke; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="rocket-2" class="start" src="img/rocket-128x127.png" alt="rocket"/>
+    </div>
+<pre style="width:400px;margin-left: 510px;"><code data-trim>
+@keyframes up-and-down {
+  0%   {bottom: 11px; }
+  50%  {bottom: 145px;}
+  100% {bottom: 11px; }
+}
+#rocket {
+  transition: left 4s, ease-out;
+}
+#rocket.start {
+  /* ... */
+}
+#rocket.end {
+  animation: up-and-down 4s;
+  left: 385px;
+}
+</code></pre>
+    <button id="lift-off-2" style="font-size: 22px; margin: 0; padding: 2px 5px 2px 5px; position:relative; margin-left:750px; top:-22px">Lift-off ...</button>
+    <script type="text/javascript">
+      $("#lift-off-2").click(function(e){
+        var rocket = $('#rocket-2');
+        var button = $('#lift-off-2');
+        if (rocket.hasClass("end")) {
+          rocket.removeClass("end");
+          button.text("Lift-off ...");
+        } else {
+          rocket.addClass("end");
+          button.text("Landing ...");
+        }
+      })
+    </script>
+  </div>
+
+</section>
+
+<section>
+
+  <h2>CSS Menüs</h2>
+
+  <img src="img/trello-menu-animation.gif" alt="trello-menu"/>
+
+</section>
+
+
+<section id="css-bilder">
+
+  <h2>CSS Bilder</h2>
+
+  <div>
+    <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="bedcon-anim-3d" class="box" title="Click to start/stop animation" src="img/bed-con-2014-orange.png" alt="bedcon" style="top:40%; bottom: 60%;position: absolute;left: 5%;right: 95%;padding: 5px"/>
+    </div>
+<pre style="width:600px;margin-left: 310px;"><code data-trim>
+.box {
+  transition:
+    all 500ms
+    cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transform:  translateY(0) scale(0.95, 0.95);
+}
+.box.active {
+  box-shadow: 0 11px 18px rgba(0,0,0,0.2);
+  transform:  translateY(-20px) scale(1, 1);
+}
+</code></pre>
+
+    <p>
+      <small><small>
+        <a href="http://aerotwist.com/tutorials/protip-nobody-expects-3d/" target="_blank">http://aerotwist.com/tutorials/protip-nobody-expects-3d/</a>
+      </small></small>
+    </p>
+
+  </div>
+
+</section>
+
+<section>
+  <h2>CSS3 Advanced++</h2>
+  <div>
+    <img src="img/at-at-walker.png" alt="at-at-walker" style="height: 180px"/>
+    <a href="copy/vijJl.html" target="_blank"><img src="img/mozilla-dev-derby.png" alt="mozilla-dev-derby" style="height: 180px"/></a>
+    <img src="img/creative-css3-menues.png" alt="creative-css3-menues" style="height: 180px"/>
+  </div>
+  <p>
+    <small><small>
+      <a href="http://anthonycalzadilla.com/css3-ATAT/" target="_blank">http://anthonycalzadilla.com/css3-ATAT/</a>
+      &sdot;
+      <a href="http://codepen.io/Sonick/pen/vijJl" target="_blank">http://codepen.io/Sonick/pen/vijJl</a>
+      &sdot;
+      <a href="http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/" target="_blank">http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/</a>
+    </small></small>
+  </p>
+</section>
+
+<section>
+
+  <h2>Nachteile CSS-Animation</h2>
+
+  <p>Nur DOM</p>
+  <p>Keine Interaktion</p>
+  <p>Keine Callbacks wenn fertig</p>
+  <p>Prozentuale Zeitangaben (keyframes)</p>
+
+</section>
+
+
+<section>
+
+  <h2>JS - jQuery Basics</h2>
+
+  <p>show / hide</p>
+  <p>fadeIn / fadeOut</p>
+  <p>slideUp / slideDown</p>
+  <p>animate (custom properties)</p>
+
+</section>
+
+<section>
+
+  <h2>JS Fading & Sliding</h2>
+
+  <div>
+    <img src="img/todo-list-anim.gif" alt="todo-list-animation"/>
+    <p>
+      <small><small>
+        <a href="todo-list/index.html" target="_blank">ToDo List Beispiel</a>
+      </small></small>
+    </p>
+
+  </div>
+
+</section>
+
+
+<section id="js-jquery-beispiel">
+
+  <h2>JS - jQuery Beispiel</h2>
+
+  <div>
+    <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="bedcon-anim-anim" src="img/bed-con-2014-orange.png" title="Click to start/stop animation" alt="bedcon" style="top:35%; bottom: 65%;position: absolute;left: 5%;right: 95%;padding: 35px 5px 0 5px"/>
+    </div>
+<pre style="width:600px;margin-left: 310px;"><code data-trim>
+var logo = $('#bedcon-logo');
+logo.animate({color: 255}, {
+  duration: 4000,
+  easing: 'swing',
+  step: function (now, tween) {
+    var color = 255 - (now | 0);
+    this.style.backgroundColor =
+          'rgb('+color+','+color+','+color+')'
+  },
+  complete: function() {
+    // 2 Sekunden setTimeout()
+    logo[0].style.backgroundColor = '#fff'
+  }
+});
+</code></pre>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <h2>Tweening</h2>
+
+  <p>Schlüsselbildanimation</p>
+  <p>Bewegung zwischen Keyframes</p>
+  <p>Unabhängig von UI-Technologie</p>
+
+</section>
+
+
+<section id="tweening-beispiel">
+
+  <h2>Tweening Beispiel</h2>
+
+  <div>
+    <div style="width: 300px; height: 370px; background-color: white; border: 1px solid gray; border-radius: 2px; float: left; clear: both">
+      <img id="bedcon-tween" class="start" src="img/bed-con-2014-orange.png" alt="bedcon" title="Click to start/stop animation"/>
+    </div>
+<pre style="width:600px;margin-left: 310px;"><code data-trim>
+img = document.getElementById("bedcon-tween");
+tween1 = new TWEEN.Tween( { x: 10 } )
+   .to( { x: 190 }, 3000 )
+   .onUpdate( function () {
+     img.style.left = this.x + 'px';  });
+tween1r = new TWEEN.Tween( { r : 0} )
+   .to( { r: 360 }, 3000)
+   .onUpdate(function () {
+     img.style.transform="rotate("+this.r+"deg)";});
+tween2 = new TWEEN.Tween( { y: 270 } )
+   .to( { y: 10 } )
+   .easing(TWEEN.Easing.Elastic.InOut)
+   .onUpdate( function () {
+     img.style.bottom = this.y + 'px';  });
+tween1.chain(tween2);
+tween1.start();  tween1r.start();
+</code></pre>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <h2>Fazit</h2>
+
+  <p><strong>JS + CSS >> JS xor CSS</strong></p>
+  <p><strong>Konsistenz >> Vielfalt</strong></p>
+  <br>
+  <p><strong>Einfach => Frameworks</strong></p>
+  <p><strong>Komplex => ...</strong></p>
+
+</section>
+
+
+<section id="animation-fun">
+
+  <h2>Animation Fun</h2>
+
+  <div>
+    <img id="we-need-you" class="box" src="img/we_need_you2.jpg" alt="we need you"/>
+  </div>
+
+</section>
+
+
+<section id="thanks-animation">
+
+  <h2>Danke &sdot; Thanks &sdot; Merci</h2>
+
+ <div class="thanks-animation">
+    <p><a target="_blank" href="http://www.aerotwist.com/lab/">Aerotwist's labs</a></p>
+    <p><a target="_blank" href="http://johnpolacek.github.io/superscrollorama/">Super Scroll Orama</a></p>
+    <p><a target="_blank" href="https://medium.com/design-ux/8068a5e4cb82">Web apps deserve sexy transitions too!</a></p>
+    <p><a target="_blank" href="http://hakim.se/">Hakim's Experiments, Thoughts & Projects</a></p>
+    <p><a target="_blank" href="http://easings.net">http://easings.net</a></p>
+    <p><a target="_blank" href="http://codepen.io/Sonick/pen/vijJl">http://codepen.io/Sonick/pen/vijJl</a></p>
+    <p><a target="_blank" href="http://anthonycalzadilla.com/css3-ATAT/">http://anthonycalzadilla.com/css3-ATAT/</a></p>
+    <p><a target="_blank" href="http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/">http://tympanus.net/Tutorials/CreativeCSS3AnimationMenus/</a></p>
+
+    <p><a target="_blank" href="https://github.com/sole/tween.js/">sole/tween.js - Javascript Tweening Engine</a></p>
+    <p><a target="_blank" href="https://github.com/hakimel/reveal.js">hakimel/reveal.js - The HTML Presentation Framework</a></p>
+
+    <p><a target="_blank" href="http://js1k.com/">JS1k: The JavaScript code golfing competition </a></p>
+  </div>
+
+  <div style="font-size: 80%;">
+    &nbsp;<br>
+
+    <p>&copy;2014 Martin W. Kirst</p>
+
+    <a target="_blank" class="kontakt" href="https://twitter.com/nitram509">Twitter:&nbsp;@nitram509</a>
+    &sdot;
+    <a target="_blank" class="kontakt" href="https://github.com/nitram509">Github:&nbsp;nitram509</a>
+    &sdot;
+    <a target="_blank" class="kontakt" id="dont-spam-me" href="mailto:info@example.org">info@example.org</a>
+    <script type="text/javascript">
+      $('#dont-spam-me').attr("href", "mailto:x.nitram509@gmail.com").text("x.nitram509@gmail.com");
+    </script>
+  </div>
+
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script type="text/javascript" src="js/SlideChangeController.js"></script>
+
+<script>
+  Reveal.initialize({
+    slideNumber: false,
+    controls: false,
+    progress: false,
+    history: true,
+    keyboard: true,
+    overview: false,
+    center: true,
+    theme: 'moon',
+    transition: 'fade',
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function () {
+        return !document.body.classList;
+      } },
+      { src: 'plugin/markdown/marked.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      } },
+      { src: 'plugin/markdown/markdown.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+        hljs.initHighlightingOnLoad();
+      } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+        return !!document.body.classList;
+      } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function () {
+        return !!document.body.classList;
+      } }
+    ]
+  });
+</script>
+
+<!--<script type="text/javascript" src="js/tween.min.js"></script>-->
+<script type="text/javascript" src="js/tween.min.js"></script>
+
+<script type="text/javascript" src="js/slides/presenting-me.js"></script>
+<script type="text/javascript" src="js/slides/css-bilder.js"></script>
+<script type="text/javascript" src="js/slides/js-jquery-beispiel.js"></script>
+<script type="text/javascript" src="js/slides/tweening-beispiel.js"></script>
+<script type="text/javascript" src="js/slides/animation-fun.js"></script>
+<script type="text/javascript" src="js/slides/thanks-anim.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48819454-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
