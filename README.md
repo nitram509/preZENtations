@@ -1,5 +1,5 @@
 Some presentations I did ...
   
-Have a look at http://nitram509.github.com/preZENtations/
-
-If you like this, endorse please: [![endorse](https://api.coderwall.com/nitram509/endorsecount.png)](https://coderwall.com/nitram509)
+* https://nitram509.github.io/preZENtations/animationszauber/
+* https://nitram509.github.io/preZENtations/trelloviz-introduction/
+* https://nitram509.github.io/preZENtations/vector-space-classification/
